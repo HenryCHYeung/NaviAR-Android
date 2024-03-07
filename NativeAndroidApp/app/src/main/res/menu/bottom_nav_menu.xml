@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Map"
+        android:icon="@drawable/baseline_map_24"
+        android:id="@+id/map" />
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Campus"
+        android:icon="@drawable/baseline_campus_24"
+        android:id="@+id/campus" />
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Events"
+        android:icon="@drawable/baseline_event_24"
+        android:id="@+id/events" />
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Friends"
+        android:icon="@drawable/baseline_friend_alt_24"
+        android:id="@+id/friends" />
+</menu>
