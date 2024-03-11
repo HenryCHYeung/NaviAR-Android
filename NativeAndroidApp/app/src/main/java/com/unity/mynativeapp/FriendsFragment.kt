@@ -1,10 +1,13 @@
 package com.example.naviar2
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import com.unity.mynativeapp.MainUnityActivity
 import com.unity.mynativeapp.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -36,6 +39,15 @@ class FriendsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_friends, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<Button>(R.id.addButton)?.setOnClickListener {
+            val intent = Intent(activity, AddActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     companion object {

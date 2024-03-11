@@ -34,6 +34,7 @@
             android:hardwareAccelerated="false"
             android:process=":Unity">
         </activity>
+        <activity android:name="com.example.naviar2.AddActivity" />
     </application>
 
 </manifest>

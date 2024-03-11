@@ -45,7 +45,7 @@ class MapFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.unityButton).setOnClickListener {
+        view.findViewById<Button>(R.id.unityButton)?.setOnClickListener {
             val intent = Intent(activity, MainUnityActivity::class.java)
             startActivity(intent)
         }

@@ -50,6 +50,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="27dp"
+        style="@style/ButtonStyle"
+        android:background="@color/buttonColor"
         android:text="Login"
         app:layout_constraintBottom_toTopOf="@+id/guestLogin"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,6 +64,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="184dp"
         android:text="Guest Login"
+        style="@style/ButtonStyle"
+        android:background="@color/buttonColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

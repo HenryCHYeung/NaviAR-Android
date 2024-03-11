@@ -6,4 +6,5 @@
     <color name="bottomNavBackground">#417bbb</color>
     <color name="bottomNavText">#f6a91b</color>
     <color name="bottomNavIcon">#f6a91b</color>
+    <color name="buttonColor">#1EA4DA</color>
 </resources>
