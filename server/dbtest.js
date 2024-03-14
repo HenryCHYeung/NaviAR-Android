@@ -36,13 +36,14 @@ io.on('connection', function(socket) {
   socket.on('login', async function(userEmail, password) {
     console.log(userEmail);
     console.log(password);
-    var userInfo = await db_all('SELECT first_name, last_name FROM Users WHERE email = ? AND user_pass = ?', [userEmail, password]);
+    var userInfo = await db_all('SELECT first_name, last_name, user_ID FROM Users WHERE email = ? AND user_pass = ?', [userEmail, password]);
     if (userInfo[0] == undefined) {
-      io.emit('login', false, "");
+      io.emit('login', false, "", 0);
     } else {
       var username = userInfo[0].first_name + " " + userInfo[0].last_name;
+      var userID = userInfo[0].user_ID;
       console.log(username);
-      io.emit('login', true, username);
+      io.emit('login', true, username, userID);
     }
   })
 })

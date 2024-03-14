@@ -7,8 +7,19 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.naviar2.UiActivity
+import android.content.SharedPreferences
+import android.content.Context
 
 class MainActivity : AppCompatActivity() {
+    var PREFS_KEY = "prefs"
+    var EMAIL_KEY = "email"
+    var PWD_KEY = "pwd"
+    var ID_KEY = "ID"
+    var NAME_KEY = "name"
+    var savedEmail = ""
+    var savedPwd = ""
+    var savedID = 0
+    var savedName = ""
     override fun onCreate(savedInstanceState: Bundle?) {        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         SocketHandler.setSocket()
@@ -22,6 +33,12 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("name", "Guest");
             startActivity(intent)
         }
+        var sharedPreferences: SharedPreferences = getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE)
+        savedEmail = sharedPreferences.getString(EMAIL_KEY, "").toString()
+        savedPwd = sharedPreferences.getString(PWD_KEY, "").toString()
+        savedID = sharedPreferences.getInt(ID_KEY, 0)
+        savedName = sharedPreferences.getString(NAME_KEY, "").toString()
+
         userLogin.setOnClickListener {
             val userEmail = findViewById<EditText>(R.id.editTextTextEmailAddress).text
             val userPass = findViewById<EditText>(R.id.editTextTextPassword).text
@@ -30,10 +47,18 @@ class MainActivity : AppCompatActivity() {
                 if (args[0] != null) {
                     val isLogged = args[0] as Boolean
                     val username = args[1] as String
+                    val stuID = args[2] as Int
                     runOnUiThread {
                         if (isLogged) {
+                            val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                            editor.putString(EMAIL_KEY, userEmail.toString())
+                            editor.putString(PWD_KEY, userPass.toString())
+                            editor.putInt(ID_KEY, stuID)
+                            editor.putString(NAME_KEY, username)
+                            editor.apply()
+
                             val intent = Intent(this, UiActivity::class.java)
-                            intent.putExtra("name", username);
+                            intent.putExtra("name", username)
                             startActivity(intent)
                         } else {
                             Toast.makeText(this@MainActivity, "Incorrect email or password", Toast.LENGTH_SHORT).show()
@@ -43,6 +68,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+    override fun onStart() {
+        super.onStart()
+        // in this method we are checking if email and pwd are not empty.
+        if (!savedEmail.equals("") && !savedPwd.equals("") && savedID != 0 && !savedName.equals("")) {
+            val intent = Intent(this, UiActivity::class.java)
+            intent.putExtra("name", savedName)
+            intent.putExtra("stuID", savedID)
+            startActivity(intent)
+        }
     }
 
 }

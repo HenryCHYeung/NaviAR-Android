@@ -9,12 +9,19 @@ import androidx.appcompat.app.AlertDialog
 import com.unity.mynativeapp.MainActivity
 import com.unity.mynativeapp.R
 import com.unity.mynativeapp.databinding.ActivityUiBinding
+import android.content.SharedPreferences
+import android.content.Context
 
 
 class UiActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUiBinding
-
+    var PREFS_KEY = "prefs"
+    var EMAIL_KEY = "email"
+    var ID_KEY = "ID"
+    var NAME_KEY = "name"
+    var username = ""
+    lateinit var sharedPreferences: SharedPreferences
     override fun onBackPressed() {
         showLogoutConfirmationDialog()
     }
@@ -31,7 +38,9 @@ class UiActivity : AppCompatActivity() {
     private fun logout() {
         // Clear any user data or session here
         // For example, clear SharedPreferences, reset variables, etc.
-
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
         // Navigate back to the login screen
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -49,6 +58,10 @@ class UiActivity : AppCompatActivity() {
         replaceFragment(MapFragment())
         val bundle = intent.extras
         val name = bundle!!.getString("name")
+        if (!name.equals("Guest")) {
+            sharedPreferences = getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE)
+            username = sharedPreferences.getString(NAME_KEY, null)!!
+        }
         supportActionBar?.title = "Welcome, $name!"
 
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
