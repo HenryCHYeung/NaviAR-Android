@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     var PWD_KEY = "pwd"
     var ID_KEY = "ID"
     var NAME_KEY = "name"
+    var ORG_KEY = "is-org"
     var savedEmail = ""
     var savedPwd = ""
     var savedID = 0
@@ -48,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                     val isLogged = args[0] as Boolean
                     val username = args[1] as String
                     val stuID = args[2] as Int
+                    val isOrganizer = args[3] as Int
                     runOnUiThread {
                         if (isLogged) {
                             val editor: SharedPreferences.Editor = sharedPreferences.edit()
@@ -55,6 +57,7 @@ class MainActivity : AppCompatActivity() {
                             editor.putString(PWD_KEY, userPass.toString())
                             editor.putInt(ID_KEY, stuID)
                             editor.putString(NAME_KEY, username)
+                            editor.putInt(ORG_KEY, isOrganizer)
                             editor.apply()
 
                             val intent = Intent(this, UiActivity::class.java)
@@ -72,7 +75,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         // in this method we are checking if email and pwd are not empty.
-        if (!savedEmail.equals("") && !savedPwd.equals("") && savedID != 0 && !savedName.equals("")) {
+        if (savedEmail != "" && savedPwd != "" && savedID != 0 && savedName != "") {
             val intent = Intent(this, UiActivity::class.java)
             intent.putExtra("name", savedName)
             intent.putExtra("stuID", savedID)

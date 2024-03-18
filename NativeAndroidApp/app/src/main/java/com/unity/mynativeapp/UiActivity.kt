@@ -11,6 +11,9 @@ import com.unity.mynativeapp.R
 import com.unity.mynativeapp.databinding.ActivityUiBinding
 import android.content.SharedPreferences
 import android.content.Context
+import com.unity.mynativeapp.SocketHandler
+import android.widget.Toast
+import android.util.Log
 
 
 class UiActivity : AppCompatActivity() {
@@ -21,6 +24,7 @@ class UiActivity : AppCompatActivity() {
     var ID_KEY = "ID"
     var NAME_KEY = "name"
     var username = ""
+    var userid = 0
     lateinit var sharedPreferences: SharedPreferences
     override fun onBackPressed() {
         showLogoutConfirmationDialog()
@@ -57,10 +61,21 @@ class UiActivity : AppCompatActivity() {
         setContentView(binding.root)
         replaceFragment(MapFragment())
         val bundle = intent.extras
-        val name = bundle!!.getString("name")
+        var name = bundle!!.getString("name")
+        val mSocket = SocketHandler.getSocket()
         if (!name.equals("Guest")) {
             sharedPreferences = getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE)
             username = sharedPreferences.getString(NAME_KEY, null)!!
+            userid = sharedPreferences.getInt(ID_KEY, 0)
+            mSocket.emit("getRequested", userid)
+            mSocket.on("getRequested") { args ->
+                if (args[0] != null) {
+                    val friendslist = args[0]
+                    runOnUiThread {
+                        Log.d("HELLO2", "$friendslist")
+                    }
+                }
+            }
         }
         supportActionBar?.title = "Welcome, $name!"
 

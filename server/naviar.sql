@@ -8,11 +8,11 @@ CREATE TABLE IF NOT EXISTS Users (
 );
 
 CREATE TABLE IF NOT EXISTS Friendship (
-	friend_1	INT				NOT NULL	REFERENCES Users(user_ID),
-    friend_2	INT				NOT NULL	REFERENCES Users(user_ID),
+	requestor	INT				NOT NULL	REFERENCES Users(user_ID),
+    receiver	INT				NOT NULL	REFERENCES Users(user_ID),
     f_status	VARCHAR(10)		NOT NULL,
-    CONSTRAINT checkUnique CHECK (friend_1 < friend_2),
-    CONSTRAINT friend_pk PRIMARY KEY (friend_1, friend_2)
+    CONSTRAINT checkUnique CHECK (requestor <> receiver),
+    CONSTRAINT friend_pk PRIMARY KEY (requestor, receiver)
 );
 
 CREATE TABLE IF NOT EXISTS Buildings (
