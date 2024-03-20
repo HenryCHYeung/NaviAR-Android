@@ -14,6 +14,7 @@ import android.content.Context
 import com.unity.mynativeapp.SocketHandler
 import android.widget.Toast
 import android.util.Log
+import org.json.JSONArray
 
 
 class UiActivity : AppCompatActivity() {
@@ -62,20 +63,10 @@ class UiActivity : AppCompatActivity() {
         replaceFragment(MapFragment())
         val bundle = intent.extras
         var name = bundle!!.getString("name")
-        val mSocket = SocketHandler.getSocket()
         if (!name.equals("Guest")) {
             sharedPreferences = getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE)
             username = sharedPreferences.getString(NAME_KEY, null)!!
             userid = sharedPreferences.getInt(ID_KEY, 0)
-            mSocket.emit("getRequested", userid)
-            mSocket.on("getRequested") { args ->
-                if (args[0] != null) {
-                    val friendslist = args[0]
-                    runOnUiThread {
-                        Log.d("HELLO2", "$friendslist")
-                    }
-                }
-            }
         }
         supportActionBar?.title = "Welcome, $name!"
 
@@ -91,7 +82,7 @@ class UiActivity : AppCompatActivity() {
                     replaceFragment(EventFragment())
                 }
                 R.id.friends -> {
-                    replaceFragment(FriendsFragment())
+                    replaceFragment(FriendsFragment.newInstance(userid))
                 }
             }
             true // Return true explicitly

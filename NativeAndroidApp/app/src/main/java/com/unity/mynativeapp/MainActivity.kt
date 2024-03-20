@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.naviar2.UiActivity
 import android.content.SharedPreferences
 import android.content.Context
+import android.util.Log
 
 class MainActivity : AppCompatActivity() {
     var PREFS_KEY = "prefs"
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
             val userPass = findViewById<EditText>(R.id.editTextTextPassword).text
             mSocket.emit("login", userEmail, userPass)
             mSocket.on("login") { args ->
+                Log.d("TESTING", "Login pressed")
                 if (args[0] != null) {
                     val isLogged = args[0] as Boolean
                     val username = args[1] as String

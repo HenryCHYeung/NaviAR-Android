@@ -101,10 +101,19 @@ io.on('connection', function(socket) {
     io.emit('addFriend', msg);
   });
 
-  socket.on('getRequested', async function(userID) {
-    var getFriendsQuery = 'SELECT u.user_ID, u.first_name, u.last_name FROM Users u, Friendship f WHERE f.requestor = ? AND u.user_ID = f.receiver;'
-    var friendslist = await db_all(getFriendsQuery, [userID]);
-    console.log(friendslist);
-    io.emit('getRequested', friendslist);
+  socket.on('getRequests', async function(userID) {
+    var getRequestedQuery = 'SELECT u.user_ID, u.first_name, u.last_name FROM Users u, Friendship f WHERE f.requestor = ? ' + 
+    'AND u.user_ID = f.receiver AND f.f_status = "pending"';
+    var requestsPending = await db_all(getRequestedQuery, [userID]);
+    var getReceivedQuery = 'SELECT u.user_ID, u.first_name, u.last_name FROM Users u, Friendship f WHERE f.receiver = ? ' + 
+    'AND u.user_ID = f.requestor AND f.f_status = "pending"';
+    var receivedFriends = await db_all(getReceivedQuery, [userID]);
+    var getFriendsQuery = 'SELECT u.user_ID, u.first_name, u.last_name FROM Users u, Friendship f WHERE ((f.requestor = ? ' + 
+    'AND u.user_ID = f.receiver) OR (f.receiver = ? AND u.user_ID = f.requestor)) AND f.f_status = "areFriends"';
+    var currentFriends = await db_all(getFriendsQuery, [userID, userID]);
+    console.log(requestsPending);
+    console.log(receivedFriends);
+    console.log(currentFriends);
+    io.emit('getRequests', requestsPending, receivedFriends, currentFriends);
   });
 });

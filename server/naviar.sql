@@ -15,6 +15,10 @@ CREATE TABLE IF NOT EXISTS Friendship (
     CONSTRAINT friend_pk PRIMARY KEY (requestor, receiver)
 );
 
+INSERT INTO Friendship VALUES (1293960, 1277182, 'areFriends'),
+                              (1280394, 1293960, 'areFriends'),
+                              (1282758, 1293960, 'pending');
+
 CREATE TABLE IF NOT EXISTS Buildings (
 	building_name	VARCHAR(60)		PRIMARY KEY,
     num_of_floors	TINYINT			NOT NULL,
