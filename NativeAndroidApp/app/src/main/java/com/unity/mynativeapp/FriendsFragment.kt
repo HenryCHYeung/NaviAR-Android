@@ -7,11 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import com.unity.mynativeapp.MainUnityActivity
 import com.unity.mynativeapp.R
 import android.util.Log
+import com.google.gson.GsonBuilder
 import org.json.JSONArray
 import com.unity.mynativeapp.SocketHandler
+import com.unity.mynativeapp.databinding.FragmentFriendsBinding
+import com.unity.mynativeapp.friend
+import com.unity.mynativeapp.receivedAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,6 +29,7 @@ private const val ARG_PARAM2 = "param2"
 class FriendsFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var userid: Int? = null
+    private lateinit var binding: FragmentFriendsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +43,8 @@ class FriendsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_friends, container, false)
+        binding = FragmentFriendsBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     fun Fragment?.runOnUiThread(action: () -> Unit) {
@@ -49,6 +54,7 @@ class FriendsFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         Log.d("fragmenttest", "$userid")
         val mSocket = SocketHandler.getSocket()
         var sentRequestsList: JSONArray
@@ -57,16 +63,23 @@ class FriendsFragment : Fragment() {
         mSocket.emit("getRequests", userid)
         mSocket.on("getRequests") { args ->
             if (args[0] != null) {
-                val sentRequests = args[0] as JSONArray
-                val receivedRequests = args[1] as JSONArray
-                val currentFriends = args[2] as JSONArray
+                val sentRequests = args[0] as JSONArray         // People the user has sent friend requests to (can cancel)
+                val receivedRequests = args[1] as JSONArray     // People that sent friend requests to the user (can accept or reject)
+                val currentFriends = args[2] as JSONArray       // Current friends of the user (can unfriend)
                 runOnUiThread {
-                    sentRequestsList = sentRequests             // People the user has sent friend requests to (can cancel)
-                    receivedRequestsList = receivedRequests     // People that sent friend requests to the user (can accept or reject)
-                    currentFriendsList = currentFriends         // Current friends of the user (can unfriend)
-                    Log.d("SENT", "$sentRequestsList")
-                    Log.d("RECEIVED", "$receivedRequestsList")
-                    Log.d("FRIENDS", "$currentFriendsList")
+                    val gson = GsonBuilder().create()
+                    val sentRequestsList = gson.fromJson(sentRequests.toString(), Array<friend>::class.java).toList()
+                    val receivedRequestsList = gson.fromJson(receivedRequests.toString(), Array<friend>::class.java).toList()
+                    val currentFriendsList = gson.fromJson(currentFriends.toString(), Array<friend>::class.java).toList()
+                    val receiveHeader = "Received Requests"
+                    val sentHeader = "Sent Requests"
+                    val currentHeader = "Current Friends"
+                    var result = listOf<Any>(receiveHeader)
+                    result = result + receivedRequestsList + sentHeader + sentRequestsList + currentHeader + currentFriendsList
+                    val sentStart = receivedRequestsList.size + 2
+                    val currentStart = sentStart + sentRequestsList.size + 1
+                    Log.d("FULL_LIST", "$result")
+                    binding.listview.adapter = receivedAdapter(this, result, sentStart, currentStart, userid!!)
                 }
             }
         }

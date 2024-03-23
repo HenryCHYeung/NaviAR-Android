@@ -102,18 +102,39 @@ io.on('connection', function(socket) {
   });
 
   socket.on('getRequests', async function(userID) {
-    var getRequestedQuery = 'SELECT u.user_ID, u.first_name, u.last_name FROM Users u, Friendship f WHERE f.requestor = ? ' + 
+    var getRequestedQuery = 'SELECT u.user_ID, u.first_name, u.last_name, u.email FROM Users u, Friendship f WHERE f.requestor = ? ' + 
     'AND u.user_ID = f.receiver AND f.f_status = "pending"';
     var requestsPending = await db_all(getRequestedQuery, [userID]);
-    var getReceivedQuery = 'SELECT u.user_ID, u.first_name, u.last_name FROM Users u, Friendship f WHERE f.receiver = ? ' + 
+    var getReceivedQuery = 'SELECT u.user_ID, u.first_name, u.last_name, u.email FROM Users u, Friendship f WHERE f.receiver = ? ' + 
     'AND u.user_ID = f.requestor AND f.f_status = "pending"';
     var receivedFriends = await db_all(getReceivedQuery, [userID]);
-    var getFriendsQuery = 'SELECT u.user_ID, u.first_name, u.last_name FROM Users u, Friendship f WHERE ((f.requestor = ? ' + 
+    var getFriendsQuery = 'SELECT u.user_ID, u.first_name, u.last_name, u.email FROM Users u, Friendship f WHERE ((f.requestor = ? ' + 
     'AND u.user_ID = f.receiver) OR (f.receiver = ? AND u.user_ID = f.requestor)) AND f.f_status = "areFriends"';
     var currentFriends = await db_all(getFriendsQuery, [userID, userID]);
     console.log(requestsPending);
     console.log(receivedFriends);
     console.log(currentFriends);
     io.emit('getRequests', requestsPending, receivedFriends, currentFriends);
+  });
+
+  socket.on('rejectRequest', async function(userID, otherID) {
+    await db_run('DELETE FROM Friendship WHERE requestor = ? AND receiver = ?', [otherID, userID]);
+    io.emit('rejectRequest', "Deleted");
+  });
+
+  socket.on('acceptRequest', async function(userID, otherID) {
+    await db_run('UPDATE Friendship SET f_status = "areFriends" WHERE requestor = ? AND receiver = ?', [otherID, userID]);
+    io.emit('acceptRequest', "Accepted");
+  });
+
+  socket.on('cancelRequest', async function(userID, otherID) {
+    await db_run('DELETE FROM Friendship WHERE requestor = ? AND receiver = ?', [userID, otherID]);
+    io.emit('cancelRequest', "Cancelled");
+  });
+
+  socket.on('unfriend', async function(userID, otherID) {
+    var unfriendQuery = 'DELETE FROM Friendship WHERE (requestor = ? AND receiver = ?) OR (requestor = ? AND receiver = ?)';
+    await db_run(unfriendQuery, [userID, otherID, otherID, userID]);
+    io.emit('unfriend', "Unfriended");
   });
 });

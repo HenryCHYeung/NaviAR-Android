@@ -11,10 +11,6 @@ import com.unity.mynativeapp.R
 import com.unity.mynativeapp.databinding.ActivityUiBinding
 import android.content.SharedPreferences
 import android.content.Context
-import com.unity.mynativeapp.SocketHandler
-import android.widget.Toast
-import android.util.Log
-import org.json.JSONArray
 
 
 class UiActivity : AppCompatActivity() {

@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Friendship (
     CONSTRAINT friend_pk PRIMARY KEY (requestor, receiver)
 );
 
-INSERT INTO Friendship VALUES (1293960, 1277182, 'areFriends'),
+INSERT OR REPLACE INTO Friendship VALUES (1293960, 1277182, 'areFriends'),
                               (1280394, 1293960, 'areFriends'),
                               (1282758, 1293960, 'pending');
 
