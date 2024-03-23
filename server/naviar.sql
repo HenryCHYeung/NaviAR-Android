@@ -46,6 +46,10 @@ CREATE TABLE IF NOT EXISTS Campus_Events (
     REFERENCES Locations(building_name, room_no)
 );
 
+INSERT OR REPLACE INTO Campus_Events VALUES ("Financial Aid Workshop 2024", "2023-04-25 12:30", 
+                                            "Edward Guiliano Global Center/1855 Broadway", "401", 
+                                            "Learn more about FAFSA, HESC, and scholarships.", 1293960);
+
 CREATE TABLE IF NOT EXISTS Event_Participants (
 	event_name		VARCHAR(50)		NOT NULL	REFERENCES Campus_Events(event_name),
     participant		INT				NOT NULL	REFERENCES Users(user_ID),

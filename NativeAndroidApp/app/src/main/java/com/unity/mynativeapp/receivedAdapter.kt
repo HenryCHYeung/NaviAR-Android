@@ -45,12 +45,14 @@ class receivedAdapter(private val context: FriendsFragment, private val received
         } else {
             val friendName = view.findViewById<TextView>(R.id.friendName)
             val friendid = view.findViewById<TextView>(R.id.friendid)
+            val friendemail = view.findViewById<TextView>(R.id.friendemail)
             val friendObject: friend = receivedArray[position] as friend
             val first_name = friendObject.first_name
             val last_name = friendObject.last_name
             val name = "$first_name $last_name"
             friendName.text = name
             friendid.text = friendObject.user_ID.toString()
+            friendemail.text = friendObject.email
             val button1 = view.findViewById<Button>(R.id.acceptButton)
             val button2 = view.findViewById<Button>(R.id.rejectButton)
             val builder = AlertDialog.Builder(context.requireContext())
