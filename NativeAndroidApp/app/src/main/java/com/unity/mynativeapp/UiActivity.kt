@@ -1,16 +1,17 @@
 package com.example.naviar2
 
-import android.os.Bundle
-import android.content.DialogInterface
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.appcompat.app.AlertDialog
 import com.unity.mynativeapp.MainActivity
 import com.unity.mynativeapp.R
 import com.unity.mynativeapp.databinding.ActivityUiBinding
-import android.content.SharedPreferences
-import android.content.Context
 
 
 class UiActivity : AppCompatActivity() {
@@ -34,6 +35,20 @@ class UiActivity : AppCompatActivity() {
         builder.setPositiveButton("Yes") { dialog, which -> logout() }
         builder.setNegativeButton("No") { dialog, which -> dialog.dismiss() }
         builder.show()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_logout) { // Use your own menu item ID
+            // Handle logout action here
+            showLogoutConfirmationDialog()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun logout() {

@@ -28,7 +28,7 @@
         tools:listitem="@layout/events_list_layout"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/addEvent"
         style="@style/ButtonStyle"
         android:layout_width="133dp"
         android:layout_height="wrap_content"
