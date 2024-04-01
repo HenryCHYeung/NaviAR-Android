@@ -13,33 +13,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextText7"
+    <Button
+        android:id="@+id/editButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="76dp"
         android:ems="10"
-        android:inputType="text"
+        android:text="Select Date/Time"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <TextView
+        android:id="@+id/datetimeset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="5dp"
+        android:text="No date/time selected"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/editButton"/>
 
     <EditText
         android:id="@+id/editTextText8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="48dp"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText7" />
+        app:layout_constraintTop_toBottomOf="@+id/editButton" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -62,7 +72,7 @@
         android:id="@+id/textView5"
         android:layout_width="128dp"
         android:layout_height="24dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="50dp"
         android:text="Event Name:"
         android:textSize="20sp"
         app:layout_constraintTop_toTopOf="parent"
@@ -92,7 +102,7 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="72dp"
         android:text="Description:"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
@@ -118,12 +128,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         tools:layout_editor_absoluteX="2dp" />
 
-    <EditText
-        android:id="@+id/editTextNumber2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Spinner
+        android:id="@+id/roomSpin"
+        android:layout_width="200dp"
+        android:layout_height="25dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintStart_toEndOf="@+id/textView9"

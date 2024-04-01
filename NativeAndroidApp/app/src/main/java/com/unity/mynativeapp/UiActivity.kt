@@ -25,7 +25,7 @@ class UiActivity : AppCompatActivity() {
     var userid = 0
     lateinit var sharedPreferences: SharedPreferences
     override fun onBackPressed() {
-        showLogoutConfirmationDialog()
+        finishAffinity()
     }
 
     private fun showLogoutConfirmationDialog() {

@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS Buildings (
 
 CREATE TABLE IF NOT EXISTS Locations (
 	building_name	VARCHAR(60)		NOT NULL	REFERENCES Buildings(building_name),
-    room_no			VARCHAR(5)		NOT NULL,
+    room_no			VARCHAR(15)		NOT NULL,
     on_floor		VARCHAR(10)		NOT NULL,
     room_type		VARCHAR(20),
     loc_desc		VARCHAR(200),
@@ -68,7 +68,8 @@ INSERT INTO Buildings VALUES ("Edward Guiliano Global Center/1855 Broadway", 12,
                              ("26W. 61st Street", 5, "NYC", "26W. 61st Street, New York, NY 10023"),
                              ("Student Activities Building/1849 Broadway", 2, "NYC", "1849 Broadway, New York, NY 10023");
 
-INSERT INTO Locations VALUES ("Edward Guiliano Global Center/1855 Broadway", "LIB", "2", NULL, "Library"),
+INSERT INTO Locations VALUES ("Edward Guiliano Global Center/1855 Broadway", "Lounge", "1", "Other", "Student Lounge"),
+                             ("Edward Guiliano Global Center/1855 Broadway", "Library", "2", NULL, "Library"),
 							 ("Edward Guiliano Global Center/1855 Broadway", "202", "2", "Office", "Sebastien Marion (Library)"),
                              ("Edward Guiliano Global Center/1855 Broadway", "303", "3", "Group Study Room", NULL),
                              ("Edward Guiliano Global Center/1855 Broadway", "304", "3", "Group Study Room", NULL),
@@ -86,7 +87,7 @@ INSERT INTO Locations VALUES ("Edward Guiliano Global Center/1855 Broadway", "LI
                              ("Edward Guiliano Global Center/1855 Broadway", "408", "4", "Lab", "Physics Lab"),
                              ("Edward Guiliano Global Center/1855 Broadway", "408A", "4", "Classroom", NULL),
                              ("Edward Guiliano Global Center/1855 Broadway", "409", "4", "Classroom", NULL),
-                             ("Edward Guiliano Global Center/1855 Broadway", "ARCH", "5", NULL, "Architecture Studio"),
+                             ("Edward Guiliano Global Center/1855 Broadway", "Arch Studio", "5", NULL, "Architecture Studio"),
                              ("Edward Guiliano Global Center/1855 Broadway", "501", "5", "Lab", "Computer Lab"),
                              ("Edward Guiliano Global Center/1855 Broadway", "601", "6", "Lab", "Computer Lab"),
                              ("Edward Guiliano Global Center/1855 Broadway", "601A", "6", "Office", "Felix Fischman (CoECS)"),
@@ -136,7 +137,7 @@ INSERT INTO Locations VALUES ("Edward Guiliano Global Center/1855 Broadway", "LI
                              ("Edward Guiliano Global Center/1855 Broadway", "1011", "10", "Lab", "Computer Lab"),
                              ("Edward Guiliano Global Center/1855 Broadway", "1012", "10", "Other", "Plot Shop"),
                              ("Edward Guiliano Global Center/1855 Broadway", "1013", "10", "Studio", "Thesis Studio"),
-                             ("Edward Guiliano Global Center/1855 Broadway", "GAL", "11", NULL, "Gallery Space"),
+                             ("Edward Guiliano Global Center/1855 Broadway", "Gallery Space", "11", NULL, "Gallery Space"),
                              ("Edward Guiliano Global Center/1855 Broadway", "1109", "11", "Office", "Anthony Caradonna (Architecture)"),
                              ("Edward Guiliano Global Center/1855 Broadway", "1110", "11", "Office", "Jason Van Nest (Architecture), Nader Vossoughian (Architecture)"),
                              ("Edward Guiliano Global Center/1855 Broadway", "1111", "11", "Office", "Marcella Del Signore (Architecture), Farzana Gandhi (Architecture)"),
@@ -147,7 +148,8 @@ INSERT INTO Locations VALUES ("Edward Guiliano Global Center/1855 Broadway", "LI
                              ("Edward Guiliano Global Center/1855 Broadway", "1119", "11", "Studio", "Master Studio"),
                              ("Edward Guiliano Global Center/1855 Broadway", "1120", "11", "Studio", "Architecture Studio");
 
-INSERT INTO Locations VALUES ("16W. 61st Street", "001", "Lobby", "Office", "Admissions"),
+INSERT INTO Locations VALUES ("16W. 61st Street", "Lounge", "1", "Other", "Student Lounge"),
+                             ("16W. 61st Street", "001", "Lobby", "Office", "Admissions"),
 							 ("16W. 61st Street", "002", "Lobby", "Office", "Bursar"),
                              ("16W. 61st Street", "003", "Lobby", "Office", "Registrar"),
                              ("16W. 61st Street", "004", "Lobby", "Office", "Michael Murphy (Registrar)"),
@@ -222,7 +224,7 @@ INSERT INTO Locations VALUES ("16W. 61st Street", "001", "Lobby", "Office", "Adm
                              ("16W. 61st Street", "1030", "10", "Office", "Uma Lyer (Math)"),
                              ("16W. 61st Street", "1032", "10", "Other", "Editing Room"),
                              ("16W. 61st Street", "1034", "10", "Other", "Video Equipment Rental Room"),
-                             ("16W. 61st Street", "AUDI", "11", NULL, "Auditorium"),
+                             ("16W. 61st Street", "Auditorium", "11", NULL, "Auditorium"),
                              ("16W. 61st Street", "1104", "11", "Office", "Joyce Chiu (Management)"),
                              ("16W. 61st Street", "1106", "11", "Other", "Audiovisual Center"),
                              ("16W. 61st Street", "1118", "11", "Conference Room", NULL),
@@ -237,6 +239,7 @@ INSERT INTO Locations VALUES ("26W. 61st Street", "004", "0", "Other", "Spiritua
                              ("26W. 61st Street", "013", "0", "Other", "Esports Room"),
                              ("26W. 61st Street", "020", "0", "Other", "Security"),
                              ("26W. 61st Street", "021", "0", "Other", "Tech Threads"),
+                             ("26W. 61st Street", "Lounge", "1", "Other", "Student Lounge"),
                              ("26W. 61st Street", "102", "1", "Office", "Office of Student Life"),
 							 ("26W. 61st Street", "103", "1", "Office", "International Education"),
                              ("26W. 61st Street", "104", "1", "Office", "Office of Student Life"),
@@ -293,3 +296,5 @@ INSERT INTO Locations VALUES ("26W. 61st Street", "004", "0", "Other", "Spiritua
                              ("26W. 61st Street", "510", "5", "Office", "Kevin O'Sullivan (Management)"),
                              ("26W. 61st Street", "511", "5", "Office", "Robert Koenig (Management)"),
                              ("26W. 61st Street", "512", "5", "Office", "Diamando Afxentiou (LEAF)");
+
+INSERT INTO Locations VALUES ("Student Activities Building/1849 Broadway", "Lounge", "1", "Other", "Student Lounge");

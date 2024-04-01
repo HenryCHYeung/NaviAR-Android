@@ -52,14 +52,14 @@ io.on('connection', function(socket) {
     var userQuery = 'SELECT first_name, last_name, user_ID, is_Organizer FROM Users WHERE email = ? AND user_pass = ?';
     var userInfo = await db_all(userQuery, [userEmail, password]);
     if (userInfo[0] == undefined) {
-      io.emit('login', false, "", 0, false);
+      socket.emit('login', false, "", 0, false);
     } else {
       var username = userInfo[0].first_name + " " + userInfo[0].last_name;
       var userID = userInfo[0].user_ID;
       var is_organizer = userInfo[0].is_Organizer
       console.log(is_organizer);
       console.log(username);
-      io.emit('login', true, username, userID, is_organizer);
+      socket.emit('login', true, username, userID, is_organizer);
     }
   });
 
@@ -98,7 +98,7 @@ io.on('connection', function(socket) {
     
     var test = await db_all('SELECT * FROM Friendship', []);
     console.log(test);
-    io.emit('addFriend', msg);
+    socket.emit('addFriend', msg);
   });
 
   socket.on('getRequests', async function(userID) {
@@ -114,27 +114,54 @@ io.on('connection', function(socket) {
     console.log(requestsPending);
     console.log(receivedFriends);
     console.log(currentFriends);
-    io.emit('getRequests', requestsPending, receivedFriends, currentFriends);
+    socket.emit('getRequests', requestsPending, receivedFriends, currentFriends);
   });
 
   socket.on('rejectRequest', async function(userID, otherID) {
     await db_run('DELETE FROM Friendship WHERE requestor = ? AND receiver = ?', [otherID, userID]);
-    io.emit('rejectRequest', "Deleted");
+    socket.emit('rejectRequest', "Deleted");
   });
 
   socket.on('acceptRequest', async function(userID, otherID) {
     await db_run('UPDATE Friendship SET f_status = "areFriends" WHERE requestor = ? AND receiver = ?', [otherID, userID]);
-    io.emit('acceptRequest', "Accepted");
+    socket.emit('acceptRequest', "Accepted");
   });
 
   socket.on('cancelRequest', async function(userID, otherID) {
     await db_run('DELETE FROM Friendship WHERE requestor = ? AND receiver = ?', [userID, otherID]);
-    io.emit('cancelRequest', "Cancelled");
+    socket.emit('cancelRequest', "Cancelled");
   });
 
   socket.on('unfriend', async function(userID, otherID) {
     var unfriendQuery = 'DELETE FROM Friendship WHERE (requestor = ? AND receiver = ?) OR (requestor = ? AND receiver = ?)';
     await db_run(unfriendQuery, [userID, otherID, otherID, userID]);
-    io.emit('unfriend', "Unfriended");
+    socket.emit('unfriend', "Unfriended");
+  });
+
+  socket.on('getBuildings', async function() {
+    var buildingsList = await db_all('SELECT building_name FROM Buildings WHERE campus = "NYC"', []);
+    console.log(buildingsList);
+    socket.emit('getBuildings', buildingsList);
+  });
+
+  socket.on('getRooms', async function(building) {
+    var roomsList = await db_all('SELECT room_no FROM Locations WHERE building_name = ?', [building]);
+    console.log(roomsList);
+    socket.emit('getRooms', roomsList);
+  });
+
+  socket.on('createEvent', async function(eventName, building, room, dateTime, desc, userID) {
+    var msg = "";
+
+    try {
+      await db_run('INSERT INTO Campus_Events VALUES(?, ?, ?, ?, ?, ?)', [eventName, dateTime, building, room, desc, userID]);
+      msg = "Event created successfully."
+    } catch(e) {
+      if (e.message.includes("UNIQUE constraint failed")) {
+        msg = "An event with this name already exists. Please use a different name."
+      }
+    }
+    console.log(msg);
+    socket.emit('createEvent', msg);
   });
 });

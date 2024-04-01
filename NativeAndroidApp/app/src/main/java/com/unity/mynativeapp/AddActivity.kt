@@ -34,7 +34,7 @@ class AddActivity : AppCompatActivity() {
                     val msg = args[0] as String
                     runOnUiThread {
                         toastMessage?.cancel()
-                        toastMessage = Toast.makeText(this@AddActivity, "$msg", Toast.LENGTH_SHORT)
+                        toastMessage = Toast.makeText(this@AddActivity, msg, Toast.LENGTH_SHORT)
                         toastMessage!!.show()
                     }
                 }
