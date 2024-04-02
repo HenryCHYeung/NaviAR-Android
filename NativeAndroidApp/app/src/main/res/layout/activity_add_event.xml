@@ -23,8 +23,19 @@
         android:id="@+id/editButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
+        android:layout_marginStart="75dp"
         android:layout_marginTop="76dp"
+        android:ems="10"
+        android:text="Select Date/Time"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <Button
+        android:id="@+id/editButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="168dp"
         android:ems="10"
         android:text="Select Date/Time"
         app:layout_constraintStart_toEndOf="@+id/textView7"
@@ -34,18 +45,28 @@
         android:id="@+id/datetimeset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="4dp"
         android:text="No date/time selected"
         app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/editButton"/>
+        app:layout_constraintTop_toBottomOf="@+id/editButton" />
+
+    <TextView
+        android:id="@+id/datetimeset2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="4dp"
+        android:text="No date/time selected"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/editButton2" />
 
     <EditText
         android:id="@+id/editTextText8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="156dp"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintStart_toEndOf="@+id/textView8"
@@ -93,16 +114,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Date / Time:"
+        android:text="Start Date/Time:"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
+        tools:layout_editor_absoluteX="2dp" />
+
+    <TextView
+        android:id="@+id/endDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:text="End Date/Time:"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
         tools:layout_editor_absoluteX="2dp" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="180dp"
         android:text="Description:"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
@@ -113,10 +144,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="136dp"
-        android:layout_marginTop="432dp"
+        android:layout_marginTop="512dp"
         android:text="Create"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/errorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@+id/createButton"
+        tools:layout_editor_absoluteX="2dp" />
 
     <TextView
         android:id="@+id/textView9"

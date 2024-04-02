@@ -150,15 +150,24 @@ io.on('connection', function(socket) {
     socket.emit('getRooms', roomsList);
   });
 
-  socket.on('createEvent', async function(eventName, building, room, dateTime, desc, userID) {
+  socket.on('createEvent', async function(eventName, building, room, startTime, endTime, desc, userID, attempt) {
     var msg = "";
-
-    try {
-      await db_run('INSERT INTO Campus_Events VALUES(?, ?, ?, ?, ?, ?)', [eventName, dateTime, building, room, desc, userID]);
-      msg = "Event created successfully."
-    } catch(e) {
-      if (e.message.includes("UNIQUE constraint failed")) {
-        msg = "An event with this name already exists. Please use a different name."
+    console.log(attempt);
+    var existsQ = 'SELECT 1 FROM Campus_Events WHERE building_name = ? AND room_no = ? AND (NOT (end_time <= ? AND start_time < ?) '+ 
+    'AND NOT (? <= end_time AND ? < start_time))';
+    var existingTime = await db_all(existsQ, [building, room, startTime, endTime, startTime, endTime]);
+    if (attempt == "first" && existingTime.length > 0) {
+      msg = "overlaps";
+    } else {
+      try {
+        await db_run('INSERT INTO Campus_Events VALUES(?, ?, ?, ?, ?, ?, ?)', [eventName, startTime, endTime, building, room, desc, userID]);
+        msg = "Event created successfully."
+      } catch(e) {
+        if (e.message.includes("UNIQUE constraint failed")) {
+          msg = "An event with this name already exists. Please use a different name."
+        } else {
+          console.log(e);
+        }
       }
     }
     console.log(msg);

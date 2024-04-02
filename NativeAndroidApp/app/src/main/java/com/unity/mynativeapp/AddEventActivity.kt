@@ -24,12 +24,16 @@ import org.json.JSONArray
 import java.util.Calendar
 import android.content.SharedPreferences
 import android.content.Context
+import androidx.appcompat.app.AlertDialog
 
 class AddEventActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityAddEventBinding
+    private val pickedDateTime1 = Calendar.getInstance()
+    private val pickedDateTime2 = Calendar.getInstance()
     private var pickedDateTimeString = ""
+    private var endDateTimeString = ""
     private lateinit var buildingArray: Array<String>
     private lateinit var selectedBuilding: String
     private lateinit var roomArray: Array<String>
@@ -40,7 +44,7 @@ class AddEventActivity : AppCompatActivity() {
     private var userID = 0
     private var toastMessage: Toast? = null
 
-    private fun pickDateTime() {
+    private fun pickDateTime(timeType: String) {
         val currentDateTime = Calendar.getInstance()
         val startYear = currentDateTime.get(Calendar.YEAR)
         val startMonth = currentDateTime.get(Calendar.MONTH)
@@ -48,20 +52,44 @@ class AddEventActivity : AppCompatActivity() {
         val startHour = currentDateTime.get(Calendar.HOUR_OF_DAY)
         val startMinute = currentDateTime.get(Calendar.MINUTE)
 
-        DatePickerDialog(this, DatePickerDialog.OnDateSetListener { _, year, month, day ->
-            TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { _, hour, minute ->
-                val pickedDateTime = Calendar.getInstance()
-                pickedDateTime.set(year, month, day, hour, minute)
+        DatePickerDialog(this, { _, year, month, day ->
+            TimePickerDialog(this, { _, hour, minute ->
+                if (timeType == "start") {
+                    pickedDateTime1.set(year, month, day, hour, minute)
+                } else if (timeType == "end") {
+                    pickedDateTime2.set(year, month, day, hour, minute)
+                }
                 val realMonth = month + 1
-                var monthString = ""
-                monthString = if (realMonth <= 10) {
+                val monthString = if (realMonth < 10) {
                     "0$realMonth"
                 } else {
                     realMonth.toString()
                 }
-                pickedDateTimeString = "$year-$monthString-$day $hour:$minute"
-                val dateTimeDisplay = findViewById<TextView>(R.id.datetimeset)
-                dateTimeDisplay.text = pickedDateTimeString
+                val dayString = if (day < 10) {
+                    "0$day"
+                } else {
+                    day.toString()
+                }
+                val hourString = if (hour < 10) {
+                    "0$hour"
+                } else {
+                    hour.toString()
+                }
+                val minString = if (minute < 10) {
+                    "0$minute"
+                } else {
+                    minute.toString()
+                }
+                if (timeType == "start") {
+                    pickedDateTimeString = "$year-$monthString-$dayString $hourString:$minString"
+                    val dateTimeDisplay = findViewById<TextView>(R.id.datetimeset)
+                    dateTimeDisplay.text = pickedDateTimeString
+                } else if (timeType == "end") {
+                    endDateTimeString = "$year-$monthString-$dayString $hourString:$minString"
+                    val dateTimeDisplay2 = findViewById<TextView>(R.id.datetimeset2)
+                    dateTimeDisplay2.text = endDateTimeString
+                }
+
             }, startHour, startMinute, false).show()
         }, startYear, startMonth, startDay).show()
     }
@@ -139,13 +167,20 @@ class AddEventActivity : AppCompatActivity() {
 
                     val datepick = findViewById<Button>(R.id.editButton)
                     datepick.setOnClickListener {
-                        pickDateTime()
+                        pickDateTime("start")
                     }
+                    val datepick2 = findViewById<Button>(R.id.editButton2)
+                    datepick2.setOnClickListener {
+                        pickDateTime("end")
+                    }
+
                     val createButton = findViewById<Button>(R.id.createButton)
                     createButton.setOnClickListener {
                         val eventName = findViewById<EditText>(R.id.editTextText5).text
                         val eventDesc = findViewById<EditText>(R.id.editTextText8).text
+                        val errorText = findViewById<TextView>(R.id.errorText)
                         var blankMsg = ""
+                        errorText.text = ""
 
                         if (eventName.isEmpty()) {
                             blankMsg = "Please enter a name for your event."
@@ -154,18 +189,40 @@ class AddEventActivity : AppCompatActivity() {
                         } else if (selectedRoom.isEmpty()) {
                             blankMsg = "Please select a room."
                         } else if (pickedDateTimeString == "") {
-                            blankMsg = "Please select a date and a time"
+                            blankMsg = "Please select a start date and time."
+                        } else if (endDateTimeString == "") {
+                            blankMsg = "Please select an end date and time."
+                        } else if (pickedDateTime1 >= pickedDateTime2) {
+                            blankMsg = "End time must be after start time."
                         } else if (eventDesc.isEmpty()) {
                             blankMsg = "Please enter a description for your event."
                         } else {
-                            mSocket.emit("createEvent", eventName, selectedBuilding, selectedRoom, pickedDateTimeString, eventDesc, userID)
-                            mSocket.on("createEvent") { args ->
+                            mSocket.emit("createEvent", eventName, selectedBuilding, selectedRoom, pickedDateTimeString, endDateTimeString, eventDesc, userID, "first")
+                            mSocket.once("createEvent") { args ->
                                 if (args[0] != null) {
                                     val msg = args[0] as String
                                     runOnUiThread {
-                                        toastMessage?.cancel()
-                                        toastMessage = Toast.makeText(this@AddEventActivity, msg, Toast.LENGTH_LONG)
-                                        toastMessage!!.show()
+                                        if (msg == "overlaps") {
+                                            val builder = AlertDialog.Builder(this@AddEventActivity)
+                                            builder.setTitle("EVENT OVERLAP")
+                                            builder.setMessage("Your event overlaps with an existing event.")
+                                            builder.setPositiveButton("Create anyway") { dialog, which ->
+                                                dialog.dismiss()
+                                                mSocket.emit("createEvent", eventName, selectedBuilding, selectedRoom, pickedDateTimeString, endDateTimeString, eventDesc, userID, "second")
+                                                mSocket.once("createEvent") { args ->
+                                                    if (args[0] != null) {
+                                                        val msg2 = args[0] as String
+                                                        runOnUiThread {
+                                                            errorText.text = msg2
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            builder.setNegativeButton("Cancel") { dialog, which -> dialog.dismiss() }
+                                            builder.show()
+                                        } else {
+                                            errorText.text = msg
+                                        }
                                     }
                                 }
                             }
