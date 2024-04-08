@@ -24,7 +24,9 @@ CREATE TABLE IF NOT EXISTS Friendship (
 
 INSERT OR REPLACE INTO Friendship VALUES (1293960, 1277182, 'areFriends'),
                               (1280394, 1293960, 'areFriends'),
-                              (1282758, 1293960, 'pending');
+                              (1282758, 1293960, 'pending'),
+                              (1293960, 1291907, 'areFriends'),
+                              (1281866, 1293960, 'areFriends');
 
 CREATE TABLE IF NOT EXISTS Buildings (
 	building_name	VARCHAR(60)		PRIMARY KEY,
@@ -42,6 +44,8 @@ CREATE TABLE IF NOT EXISTS Locations (
     CONSTRAINT loc_pk PRIMARY KEY (building_name, room_no)
 );
 
+DROP TABLE Campus_Events;
+
 CREATE TABLE IF NOT EXISTS Campus_Events (
 	event_name		VARCHAR(50)		NOT NULL	PRIMARY KEY,
     start_time		DATETIME		NOT NULL,
@@ -55,24 +59,45 @@ CREATE TABLE IF NOT EXISTS Campus_Events (
     REFERENCES Locations(building_name, room_no)
 );
 
-INSERT OR REPLACE INTO Campus_Events VALUES ("Financial Aid Workshop 2024", "2023-04-25 12:30", "2023-04-25 14:00",
+INSERT OR REPLACE INTO Campus_Events VALUES ("Financial Aid Workshop 2024", "2024-04-25 12:30", "2024-04-25 14:00",
                                             "Edward Guiliano Global Center/1855 Broadway", "401", 
                                             "Learn more about FAFSA, HESC, and scholarships.", 1293960);
 
-INSERT OR REPLACE INTO Campus_Events VALUES ("Event 2", "2023-04-2 12:30", "2023-04-2 14:8",
+INSERT OR REPLACE INTO Campus_Events VALUES ("Event 2", "2024-04-11 12:30", "2024-04-11 14:08",
                                             "Edward Guiliano Global Center/1855 Broadway", "401", 
-                                            "Learn more about FAFSA, HESC, and scholarships.", 1293960);
+                                            "Learn more about FAFSA, HESC, and scholarships.", 1281866);
+
+INSERT OR REPLACE INTO Campus_Events VALUES ("Event 3", "2024-04-10 12:30", "2024-04-10 14:08",
+                                            "Edward Guiliano Global Center/1855 Broadway", "401", 
+                                            "Learn more about FAFSA, HESC, and scholarships.", 1291907);
+
+DROP TABLE IF EXISTS Event_Participants;
 
 CREATE TABLE IF NOT EXISTS Event_Participants (
-	event_name		VARCHAR(50)		NOT NULL	REFERENCES Campus_Events(event_name),
-    participant		INT				NOT NULL	REFERENCES Users(user_ID),
+	event_name		VARCHAR(50)		NOT NULL	REFERENCES Campus_Events(event_name) ON DELETE CASCADE,
+    participant		INT				NOT NULL	REFERENCES Users(user_ID) ON DELETE CASCADE,
     CONSTRAINT ep_pk PRIMARY KEY (event_name, participant)
 );
+
+INSERT OR REPLACE INTO Event_Participants VALUES ("Event 2", 1280394),
+                                                 ("Event 2", 1277182),
+                                                 ("Event 3", 1281866),
+                                                 ("Test", 1282758);
+
+SELECT DISTINCT e.*, u.first_name, u.last_name FROM Campus_Events e
+JOIN Users u
+ON e.organizer = u.user_ID
+JOIN Event_Participants p
+ON e.event_name = p.event_name AND e.organizer <> 1293960
+JOIN Friendship f
+ON (p.participant = f.requestor AND f.receiver = 1293960) OR (p.participant = f.receiver AND f.requestor = 1293960);
+
+INSERT INTO Friendship VALUES (1281866, 1277182, "areFriends");
 
 INSERT INTO Users VALUES (1293960, "Henry", "Yeung", "cyeung03@nyit.edu", "passwordHenry", true),
 						 (1281866, "Guang", "Too", "gtoo@nyit.edu", "passwordGuang", true),
 						 (1291907, "Autumn", "Penge", "apenge@nyit.edu", "passwordAutumn", true),
-                         (1282758, "Ahmadullah", "Sharifi", "asharifi@nyit.edu", "passwordAhmadullah", false),
+                         (1282758, "Ahmadullah", "Sharifi", "asharifi@nyit.edu", "passwordAhmadullah", true),
                          (1277182, "Christian", "Pascal", "csinoagp@nyit.edu", "passwordChris", false),
                          (1280394, "Brahian", "Almonte", "balmon02@nyit.edu", "passwordBrahian", false);
 

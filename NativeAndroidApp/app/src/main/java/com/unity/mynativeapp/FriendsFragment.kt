@@ -47,7 +47,7 @@ class FriendsFragment : Fragment() {
         return binding.root
     }
 
-    fun Fragment?.runOnUiThread(action: () -> Unit) {
+    private fun Fragment?.runOnUiThread(action: () -> Unit) {
         this ?: return
         if (!isAdded) return
         activity?.runOnUiThread(action)
@@ -57,15 +57,13 @@ class FriendsFragment : Fragment() {
 
         Log.d("fragmenttest", "$userid")
         val mSocket = SocketHandler.getSocket()
-        var sentRequestsList: JSONArray
-        var receivedRequestsList: JSONArray
-        var currentFriendsList: JSONArray
         mSocket.emit("getRequests", userid)
         mSocket.on("getRequests") { args ->
             if (args[0] != null) {
                 val sentRequests = args[0] as JSONArray         // People the user has sent friend requests to (can cancel)
                 val receivedRequests = args[1] as JSONArray     // People that sent friend requests to the user (can accept or reject)
                 val currentFriends = args[2] as JSONArray       // Current friends of the user (can unfriend)
+
                 runOnUiThread {
                     val gson = GsonBuilder().create()
                     val sentRequestsList = gson.fromJson(sentRequests.toString(), Array<friend>::class.java).toList()

@@ -17,13 +17,14 @@ import com.unity.mynativeapp.databinding.ActivityUiBinding
 class UiActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUiBinding
-    var PREFS_KEY = "prefs"
-    var EMAIL_KEY = "email"
-    var ID_KEY = "ID"
-    var NAME_KEY = "name"
-    var username = ""
-    var userid = 0
-    lateinit var sharedPreferences: SharedPreferences
+    private var PREFS_KEY = "prefs"
+    private var ID_KEY = "ID"
+    private var ORG_KEY = "is-org"
+    private var NAME_KEY = "name"
+    private var username = ""
+    private var userid = 0
+    private var is_organizer = -1
+    private lateinit var sharedPreferences: SharedPreferences
     override fun onBackPressed() {
         finishAffinity()
     }
@@ -64,9 +65,6 @@ class UiActivity : AppCompatActivity() {
         finish()
     }
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUiBinding.inflate(layoutInflater)
@@ -78,6 +76,7 @@ class UiActivity : AppCompatActivity() {
             sharedPreferences = getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE)
             username = sharedPreferences.getString(NAME_KEY, null)!!
             userid = sharedPreferences.getInt(ID_KEY, 0)
+            is_organizer = sharedPreferences.getInt(ORG_KEY, -1)
         }
         supportActionBar?.title = "Welcome, $name!"
 
@@ -90,7 +89,7 @@ class UiActivity : AppCompatActivity() {
                     replaceFragment(CampusFragment())
                 }
                 R.id.events -> {
-                    replaceFragment(EventFragment())
+                    replaceFragment(EventFragment.newInstance(userid, is_organizer))
                 }
                 R.id.friends -> {
                     replaceFragment(FriendsFragment.newInstance(userid))

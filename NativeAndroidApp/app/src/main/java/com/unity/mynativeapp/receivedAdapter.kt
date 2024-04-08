@@ -47,9 +47,7 @@ class receivedAdapter(private val context: FriendsFragment, private val received
             val friendid = view.findViewById<TextView>(R.id.friendid)
             val friendemail = view.findViewById<TextView>(R.id.friendemail)
             val friendObject: friend = receivedArray[position] as friend
-            val first_name = friendObject.first_name
-            val last_name = friendObject.last_name
-            val name = "$first_name $last_name"
+            val name = friendObject.first_name + " " + friendObject.last_name
             friendName.text = name
             friendid.text = friendObject.user_ID.toString()
             friendemail.text = friendObject.email
@@ -60,16 +58,16 @@ class receivedAdapter(private val context: FriendsFragment, private val received
             if (getItemViewType(position) == RECEIVED) {
                 button1.setOnClickListener {
                     mSocket.emit("acceptRequest", userid, friendObject.user_ID)
-                    mSocket.on("acceptRequest") { args ->
+                    mSocket.once("acceptRequest") { args ->
                         // reload fragment (may need RunOnUiThread)
                     }
                 }
                 button2.setOnClickListener {
-                    builder.setTitle("REJECT")
+                    builder.setTitle("Reject Friend Request")
                     builder.setMessage("Are you sure you want to reject the request?")
                     builder.setPositiveButton("Yes") { dialog, which ->
                         mSocket.emit("rejectRequest", userid, friendObject.user_ID)
-                        mSocket.on("rejectRequest") { args ->
+                        mSocket.once("rejectRequest") { args ->
                             // reload fragment (may need RunOnUiThread)
                         }
                     }
@@ -83,11 +81,11 @@ class receivedAdapter(private val context: FriendsFragment, private val received
                 button2.text = "CANCEL"
 
                 button2.setOnClickListener {
-                    builder.setTitle("CANCEL")
+                    builder.setTitle("Cancel Friend Request")
                     builder.setMessage("Are you sure you want to cancel your request?")
                     builder.setPositiveButton("Yes") { dialog, which ->
                         mSocket.emit("cancelRequest", userid, friendObject.user_ID)
-                        mSocket.on("cancelRequest") { args ->
+                        mSocket.once("cancelRequest") { args ->
                             // reload fragment (may need RunOnUiThread)
                         }
                     }
@@ -100,11 +98,11 @@ class receivedAdapter(private val context: FriendsFragment, private val received
                 button2.text = "UNFRIEND"
 
                 button2.setOnClickListener {
-                    builder.setTitle("UNFRIEND")
+                    builder.setTitle("Unfriend")
                     builder.setMessage("Are you sure you want to unfriend this person?")
                     builder.setPositiveButton("Yes") { dialog, which ->
                         mSocket.emit("unfriend", userid, friendObject.user_ID)
-                        mSocket.on("unfriend") { args ->
+                        mSocket.once("unfriend") { args ->
                             // reload fragment (may need RunOnUiThread)
                         }
                     }

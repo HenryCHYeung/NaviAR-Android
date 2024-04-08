@@ -32,14 +32,35 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/eventtime"
+                    android:id="@+id/eventTime"
                     android:layout_marginTop="5dp"
                     android:layout_marginStart="5dp"
-                    android:text="1281866"/>
+                    android:text="2024-04-03 12:30 - 2024-04-03 14:30"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/organizer"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="5dp"
+                    android:text="Organizer:"/>
 
             </LinearLayout>
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/eventButton"
+            style="@style/ButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/buttonColor"
+            android:padding="1dp"
+            android:text="DELETE"
+            android:focusable="false" />
 
     </RelativeLayout>
 

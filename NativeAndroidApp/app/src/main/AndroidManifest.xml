@@ -39,6 +39,17 @@
             android:process=":Unity"
             android:screenOrientation="fullSensor"></activity>
         <activity android:name="com.example.naviar2.AddActivity" />
+        <activity
+            android:name="com.unity.mynativeapp.DetailsEvent"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
