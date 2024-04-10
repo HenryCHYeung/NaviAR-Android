@@ -7,11 +7,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ListView
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil.setContentView
 import com.unity.mynativeapp.MainUnityActivity
 import com.unity.mynativeapp.R
+import com.unity.mynativeapp.SocketHandler
+import com.unity.mynativeapp.databinding.FragmentCampusBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +32,11 @@ class CampusFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var binding: FragmentCampusBinding
+    lateinit var listView: ListView
+    lateinit var listAdapter: ArrayAdapter<String>
+    lateinit var locationList: ArrayList<String>;
+    lateinit var searchView: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,10 +51,38 @@ class CampusFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_campus, container, false)
+        binding = FragmentCampusBinding.inflate(layoutInflater)
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val mSocket = SocketHandler.getSocket()
+        searchView = view.findViewById(R.id.searchBar)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // on below line we are checking
+                // if query exist or not.
+                if (locationList.contains(query)) {
+                    // if query exist within list we
+                    // are filtering our list adapter.
+                    listAdapter.filter.filter(query)
+                } else {
+                    // if query is not present we are displaying
+                    // a toast message as no  data found..
+                    Toast.makeText(requireContext(), "No Language found..", Toast.LENGTH_LONG).show()
+                }
+                return false
+            }
 
+            override fun onQueryTextChange(newText: String?): Boolean {
+                mSocket.emit("searchQuery", newText)
+
+//                listAdapter.filter.filter(newText)
+                return false
+            }
+        })
+    }
 
     companion object {
         /**

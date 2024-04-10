@@ -232,4 +232,10 @@ io.on('connection', function(socket) {
     console.log(msg);
     socket.emit('joinEvent', msg);
   });
+
+  socket.on('searchQuery', async function(userText) {
+    var input = "%" + userText + "%";
+    var searchResults = await db_all('SELECT * FROM Locations WHERE room_type LIKE ? OR loc_desc LIKE ?', [input, input]);
+    console.log(searchResults);
+  });
 });
