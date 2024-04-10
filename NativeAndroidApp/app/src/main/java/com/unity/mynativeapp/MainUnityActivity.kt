@@ -9,10 +9,13 @@ import com.unity3d.player.UnityPlayer
 
 class MainUnityActivity : OverrideUnityActivity() {
     // Setup activity layout
+
+    private var locationString = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         addControlsToUnityFrame()
         val intent = intent
+        locationString = intent.getStringExtra("location").toString()
         handleIntent(intent)
     }
 
