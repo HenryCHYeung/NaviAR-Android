@@ -6,7 +6,7 @@ import java.net.URISyntaxException
 
 object SocketHandler {
 
-    lateinit var mSocket: Socket
+    private lateinit var mSocket: Socket
 
     @Synchronized
     fun setSocket() {

@@ -3,10 +3,16 @@ package com.unity.mynativeapp
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.FrameLayout
+import android.widget.ListView
+import android.widget.SearchView
+import android.widget.TextView
 import com.company.product.OverrideUnityActivity
+import com.google.gson.GsonBuilder
 import com.unity3d.player.UnityPlayer
+import org.json.JSONArray
 
 class MainUnityActivity : OverrideUnityActivity() {
     // Setup activity layout
@@ -49,12 +55,45 @@ class MainUnityActivity : OverrideUnityActivity() {
     fun addControlsToUnityFrame() {
         val layout: FrameLayout = mUnityPlayer
         run {
-            val myButton = Button(this)
-            myButton.text = "Show Main"
-            myButton.x = 10f
-            myButton.y = 500f
-            myButton.setOnClickListener { showMainActivity("") }
-            layout.addView(myButton, 300, 200)
+            val searchView = SearchView(this)
+            val listView = ListView(this)
+            SocketHandler.setSocket()
+            SocketHandler.establishConnection()
+            val mSocket = SocketHandler.getSocket()
+            var selectedLoc = location("", "", "", "", "")
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    locationString = selectedLoc.unityString()
+                    return false
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    mSocket.emit("searchQuery", newText)
+                    mSocket.once("searchQuery") { args ->
+                        if (args[0] != null) {
+                            val allList = args[0] as JSONArray
+
+                            runOnUiThread {
+                                val gson = GsonBuilder().create()
+                                val locationList = gson.fromJson(allList.toString(), Array<location>::class.java).toList()
+                                val listAdapter = ArrayAdapter<location>(this@MainUnityActivity, android.R.layout.simple_list_item_1, locationList)
+                                listView.adapter = listAdapter
+                                listView.setOnItemClickListener { parent, view, position, id ->
+                                    selectedLoc = locationList[position]
+                                    searchView.setQuery(locationList[position].toString(), true)
+                                }
+                            }
+                        }
+                    }
+                    return false
+                }
+            })
+            searchView.x = 10f
+            searchView.y = 500f
+            listView.x = 20f
+            listView.y = 700f
+            layout.addView(searchView, 300, 200)
+            layout.addView(listView, 300, 200)
         }
         run {
             val myButton = Button(this)
