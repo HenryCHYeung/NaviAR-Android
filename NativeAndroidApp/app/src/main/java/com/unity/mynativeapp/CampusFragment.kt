@@ -3,6 +3,7 @@ package com.example.naviar2
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +12,17 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import android.widget.SearchView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil.setContentView
+import com.google.gson.GsonBuilder
 import com.unity.mynativeapp.MainUnityActivity
 import com.unity.mynativeapp.R
 import com.unity.mynativeapp.SocketHandler
 import com.unity.mynativeapp.databinding.FragmentCampusBinding
+import com.unity.mynativeapp.event
+import com.unity.mynativeapp.location
+import org.json.JSONArray
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,10 +39,11 @@ class CampusFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var binding: FragmentCampusBinding
-    lateinit var listView: ListView
-    lateinit var listAdapter: ArrayAdapter<String>
-    lateinit var locationList: ArrayList<String>;
-    lateinit var searchView: SearchView
+    private lateinit var listAdapter: ArrayAdapter<location>
+    private lateinit var locationList: List<location>;
+    private lateinit var searchView: SearchView
+    private var selectedLoc: location = location("", "", "", "", "")
+    private var unityString: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,33 +62,53 @@ class CampusFragment : Fragment() {
         return binding.root
     }
 
+    private fun Fragment?.runOnUiThread(action: () -> Unit) {
+        this ?: return
+        if (!isAdded) return
+        activity?.runOnUiThread(action)
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mSocket = SocketHandler.getSocket()
+        locationList = listOf()
         searchView = view.findViewById(R.id.searchBar)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                // on below line we are checking
-                // if query exist or not.
-                if (locationList.contains(query)) {
-                    // if query exist within list we
-                    // are filtering our list adapter.
-                    listAdapter.filter.filter(query)
-                } else {
-                    // if query is not present we are displaying
-                    // a toast message as no  data found..
-                    Toast.makeText(requireContext(), "No Language found..", Toast.LENGTH_LONG).show()
-                }
+                val selected = view.findViewById<TextView>(R.id.selected)
+                selected.text = "Selected Location: $query"
+                unityString = selectedLoc.unityString()
+                Log.d("UNITYSTR", unityString)
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 mSocket.emit("searchQuery", newText)
+                mSocket.once("searchQuery") { args ->
+                    if (args[0] != null) {
+                        val allList = args[0] as JSONArray
 
-//                listAdapter.filter.filter(newText)
+                        runOnUiThread {
+                            val gson = GsonBuilder().create()
+                            locationList = gson.fromJson(allList.toString(), Array<location>::class.java).toList()
+                            listAdapter = ArrayAdapter<location>(requireContext(), android.R.layout.simple_list_item_1, locationList)
+                            binding.locList.adapter = listAdapter
+                            binding.locList.setOnItemClickListener { parent, view, position, id ->
+                                selectedLoc = locationList[position]
+                                searchView.setQuery(locationList[position].toString(), true)
+                            }
+                        }
+                    }
+                }
                 return false
             }
         })
+
+        view.findViewById<Button>(R.id.unityButton2)?.setOnClickListener {
+            val intent = Intent(activity, MainUnityActivity::class.java)
+            val example = "16W. 61st Street,8,822"
+            intent.putExtra("location", example)
+            startActivity(intent)
+        }
     }
 
     companion object {

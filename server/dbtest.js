@@ -235,7 +235,9 @@ io.on('connection', function(socket) {
 
   socket.on('searchQuery', async function(userText) {
     var input = "%" + userText + "%";
-    var searchResults = await db_all('SELECT * FROM Locations WHERE room_type LIKE ? OR loc_desc LIKE ?', [input, input]);
+    var searchQ = 'SELECT * FROM Locations WHERE room_no LIKE ? OR room_type LIKE ? OR loc_desc LIKE ?';
+    var searchResults = await db_all(searchQ, [input, input, input]);
     console.log(searchResults);
+    socket.emit('searchQuery', searchResults);
   });
 });

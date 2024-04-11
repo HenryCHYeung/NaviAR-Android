@@ -2,6 +2,7 @@ package com.unity.mynativeapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.FrameLayout
 import com.company.product.OverrideUnityActivity
@@ -16,6 +17,7 @@ class MainUnityActivity : OverrideUnityActivity() {
         addControlsToUnityFrame()
         val intent = intent
         locationString = intent.getStringExtra("location").toString()
+        Log.d("Location", locationString)
         handleIntent(intent)
     }
 
