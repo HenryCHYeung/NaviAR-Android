@@ -103,15 +103,12 @@ class MainUnityActivity : OverrideUnityActivity() {
         }
         run {
             val myButton = Button(this)
-            myButton.text = "Send Msg"
+            myButton.text = "Search"
             myButton.x = 320f
             myButton.y = 500f
             myButton.setOnClickListener {
-                UnityPlayer.UnitySendMessage(
-                    "Cube",
-                    "ChangeColor",
-                    "yellow"
-                )
+                Log.d("checkString",locationString)
+                sendLocationMsg(locationString)
             }
             layout.addView(myButton, 300, 200)
         }
