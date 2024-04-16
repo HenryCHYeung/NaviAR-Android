@@ -105,8 +105,7 @@ class CampusFragment : Fragment() {
 
         view.findViewById<Button>(R.id.unityButton2)?.setOnClickListener {
             val intent = Intent(activity, MainUnityActivity::class.java)
-            val example = "16W. 61st Street,8,822"
-            intent.putExtra("location", example)
+            intent.putExtra("location", unityString)
             startActivity(intent)
         }
     }

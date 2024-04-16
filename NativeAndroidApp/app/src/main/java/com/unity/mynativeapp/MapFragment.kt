@@ -47,7 +47,7 @@ class MapFragment : Fragment() {
 
         view.findViewById<Button>(R.id.unityButton)?.setOnClickListener {
             val intent = Intent(activity, MainUnityActivity::class.java)
-            val example = "16W. 61st Street,8,822"
+            val example = "Naviar/Scenes/Buildings"
             intent.putExtra("location", example)
             startActivity(intent)
         }

@@ -18,15 +18,21 @@ class MainUnityActivity : OverrideUnityActivity() {
     // Setup activity layout
 
     private var locationString = ""
+    //function to send location
+    fun sendLocationMsg(location: String){
+        UnityPlayer.UnitySendMessage("Messenger","sendDataToScene",location)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         addControlsToUnityFrame()
         val intent = intent
         locationString = intent.getStringExtra("location").toString()
-        Log.d("Location", locationString)
+        loadUnityScene(locationString)
         handleIntent(intent)
     }
-
+    private fun loadUnityScene(sceneName: String) {
+        UnityPlayer.UnitySendMessage("Messenger", "toScene", sceneName)
+    }
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         handleIntent(intent)
