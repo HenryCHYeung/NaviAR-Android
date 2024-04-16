@@ -25,18 +25,16 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/events_list_layout"/>
+        tools:listitem="@layout/events_list_layout">
 
-    <Button
-        android:id="@+id/addEvent"
-        style="@style/ButtonStyle"
-        android:layout_width="133dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:background="@color/buttonColor"
-        android:text="Create an Event"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+        <Button
+            android:id="@+id/addEvent"
+            style="@style/ButtonStyle"
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:background="@color/buttonColor"
+            android:text="Create an Event" />
+    </ListView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

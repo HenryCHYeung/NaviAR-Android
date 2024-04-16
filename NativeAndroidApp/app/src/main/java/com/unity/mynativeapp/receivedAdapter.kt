@@ -68,8 +68,10 @@ class receivedAdapter(private val context: FriendsFragment, private val received
                     builder.setPositiveButton("Yes") { dialog, which ->
                         mSocket.emit("rejectRequest", userid, friendObject.user_ID)
                         mSocket.once("rejectRequest") { args ->
-                            // reload fragment (may need RunOnUiThread)
-                        }
+                            context.requireActivity().runOnUiThread {
+                                // Notify the fragment to reload
+                                context.reloadFragment()
+                            }                        }
                     }
                     builder.setNegativeButton("No") { dialog, which -> dialog.dismiss() }
                     builder.show()
@@ -86,7 +88,10 @@ class receivedAdapter(private val context: FriendsFragment, private val received
                     builder.setPositiveButton("Yes") { dialog, which ->
                         mSocket.emit("cancelRequest", userid, friendObject.user_ID)
                         mSocket.once("cancelRequest") { args ->
-                            // reload fragment (may need RunOnUiThread)
+                            context.requireActivity().runOnUiThread {
+                                // Notify the fragment to reload
+                                context.reloadFragment()
+                            }
                         }
                     }
                     builder.setNegativeButton("No") { dialog, which -> dialog.dismiss() }
@@ -103,8 +108,10 @@ class receivedAdapter(private val context: FriendsFragment, private val received
                     builder.setPositiveButton("Yes") { dialog, which ->
                         mSocket.emit("unfriend", userid, friendObject.user_ID)
                         mSocket.once("unfriend") { args ->
-                            // reload fragment (may need RunOnUiThread)
-                        }
+                            context.requireActivity().runOnUiThread {
+                                // Notify the fragment to reload
+                                context.reloadFragment()
+                            }                        }
                     }
                     builder.setNegativeButton("No") { dialog, which -> dialog.dismiss() }
                     builder.show()

@@ -1,20 +1,23 @@
 package com.example.naviar2
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import com.unity.mynativeapp.R
-import android.util.Log
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import com.google.gson.GsonBuilder
-import org.json.JSONArray
+import com.unity.mynativeapp.R
 import com.unity.mynativeapp.SocketHandler
 import com.unity.mynativeapp.databinding.FragmentFriendsBinding
 import com.unity.mynativeapp.friend
 import com.unity.mynativeapp.receivedAdapter
+import org.json.JSONArray
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -54,7 +57,14 @@ class FriendsFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loadData()
+        view.findViewById<Button>(R.id.addButton)?.setOnClickListener {
+            val intent = Intent(activity, AddActivity::class.java)
+            startActivity(intent)
+        }
+    }
 
+    private fun loadData() {
         Log.d("fragmenttest", "$userid")
         val mSocket = SocketHandler.getSocket()
         mSocket.emit("getRequests", userid)
@@ -64,7 +74,7 @@ class FriendsFragment : Fragment() {
                 val receivedRequests = args[1] as JSONArray     // People that sent friend requests to the user (can accept or reject)
                 val currentFriends = args[2] as JSONArray       // Current friends of the user (can unfriend)
 
-                runOnUiThread {
+                requireActivity().runOnUiThread {
                     val gson = GsonBuilder().create()
                     val sentRequestsList = gson.fromJson(sentRequests.toString(), Array<friend>::class.java).toList()
                     val receivedRequestsList = gson.fromJson(receivedRequests.toString(), Array<friend>::class.java).toList()
@@ -81,12 +91,14 @@ class FriendsFragment : Fragment() {
                 }
             }
         }
-
-        view.findViewById<Button>(R.id.addButton)?.setOnClickListener {
-            val intent = Intent(activity, AddActivity::class.java)
-            startActivity(intent)
-        }
     }
+
+
+
+    fun reloadFragment() {
+        loadData();
+    }
+
 
     companion object {
         /**
