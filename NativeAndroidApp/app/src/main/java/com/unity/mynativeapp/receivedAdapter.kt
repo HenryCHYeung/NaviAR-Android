@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import com.example.naviar2.FriendsFragment
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 
@@ -59,7 +60,13 @@ class receivedAdapter(private val context: FriendsFragment, private val received
                 button1.setOnClickListener {
                     mSocket.emit("acceptRequest", userid, friendObject.user_ID)
                     mSocket.once("acceptRequest") { args ->
-                        // reload fragment (may need RunOnUiThread)
+                        context.requireActivity().runOnUiThread {
+                            if (args[0] != null) {
+                                val msg = args[0] as String
+                                context.reloadFragment()
+                                Toast.makeText(context.requireContext(), msg, Toast.LENGTH_SHORT).show()
+                            }
+                        }
                     }
                 }
                 button2.setOnClickListener {
@@ -69,9 +76,13 @@ class receivedAdapter(private val context: FriendsFragment, private val received
                         mSocket.emit("rejectRequest", userid, friendObject.user_ID)
                         mSocket.once("rejectRequest") { args ->
                             context.requireActivity().runOnUiThread {
-                                // Notify the fragment to reload
-                                context.reloadFragment()
-                            }                        }
+                                if (args[0] != null) {
+                                    val msg = args[0] as String
+                                    context.reloadFragment()
+                                    Toast.makeText(context.requireContext(), msg, Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }
                     }
                     builder.setNegativeButton("No") { dialog, which -> dialog.dismiss() }
                     builder.show()
@@ -89,8 +100,11 @@ class receivedAdapter(private val context: FriendsFragment, private val received
                         mSocket.emit("cancelRequest", userid, friendObject.user_ID)
                         mSocket.once("cancelRequest") { args ->
                             context.requireActivity().runOnUiThread {
-                                // Notify the fragment to reload
-                                context.reloadFragment()
+                                if (args[0] != null) {
+                                    val msg = args[0] as String
+                                    context.reloadFragment()
+                                    Toast.makeText(context.requireContext(), msg, Toast.LENGTH_SHORT).show()
+                                }
                             }
                         }
                     }
@@ -109,9 +123,13 @@ class receivedAdapter(private val context: FriendsFragment, private val received
                         mSocket.emit("unfriend", userid, friendObject.user_ID)
                         mSocket.once("unfriend") { args ->
                             context.requireActivity().runOnUiThread {
-                                // Notify the fragment to reload
-                                context.reloadFragment()
-                            }                        }
+                                if (args[0] != null) {
+                                    val msg = args[0] as String
+                                    context.reloadFragment()
+                                    Toast.makeText(context.requireContext(), msg, Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }
                     }
                     builder.setNegativeButton("No") { dialog, which -> dialog.dismiss() }
                     builder.show()

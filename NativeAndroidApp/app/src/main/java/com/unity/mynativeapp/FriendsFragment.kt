@@ -74,7 +74,7 @@ class FriendsFragment : Fragment() {
                 val receivedRequests = args[1] as JSONArray     // People that sent friend requests to the user (can accept or reject)
                 val currentFriends = args[2] as JSONArray       // Current friends of the user (can unfriend)
 
-                requireActivity().runOnUiThread {
+                runOnUiThread {
                     val gson = GsonBuilder().create()
                     val sentRequestsList = gson.fromJson(sentRequests.toString(), Array<friend>::class.java).toList()
                     val receivedRequestsList = gson.fromJson(receivedRequests.toString(), Array<friend>::class.java).toList()
@@ -96,7 +96,7 @@ class FriendsFragment : Fragment() {
 
 
     fun reloadFragment() {
-        loadData();
+        loadData()
     }
 
 

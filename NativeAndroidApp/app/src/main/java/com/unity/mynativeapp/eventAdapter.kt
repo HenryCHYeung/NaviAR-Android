@@ -64,7 +64,13 @@ class eventAdapter(private val context: EventFragment, private val receivedArray
                     builder.setPositiveButton("Yes") { dialog, which ->
                         mSocket.emit("deleteEvent", userid, eventObject.event_name)
                         mSocket.once("deleteEvent") { args ->
-                            // reload fragment (may need RunOnUiThread)
+                            context.requireActivity().runOnUiThread {
+                                if (args[0] != null) {
+                                    val msg = args[0] as String
+                                    context.loadData()
+                                    Toast.makeText(context.requireContext(), msg, Toast.LENGTH_SHORT).show()
+                                }
+                            }
                         }
                     }
                     builder.setNegativeButton("No") { dialog, which -> dialog.dismiss() }
@@ -78,21 +84,30 @@ class eventAdapter(private val context: EventFragment, private val receivedArray
                     builder.setPositiveButton("Yes") { dialog, which ->
                         mSocket.emit("withdrawEvent", userid, eventObject.event_name)
                         mSocket.once("withdrawEvent") { args ->
-                            // reload fragment (may need RunOnUiThread)
+                            context.requireActivity().runOnUiThread {
+                                if (args[0] != null) {
+                                    val msg = args[0] as String
+                                    context.loadData()
+                                    Toast.makeText(context.requireContext(), msg, Toast.LENGTH_SHORT).show()
+                                }
+                            }
                         }
                     }
                     builder.setNegativeButton("No") { dialog, which -> dialog.dismiss() }
                     builder.show()
                 }
             } else if (getItemViewType(position) == NOTJOINED) {
-                button.text = "JOIN"
+                button.text = "REGISTER"
                 button.setOnClickListener {
                     mSocket.emit("joinEvent", userid, eventObject.event_name)
                     mSocket.once("joinEvent") { args ->
-//                        if (args[0] != null) {
-//                            val msg = args[0] as String
-//                            Toast.makeText(context.requireContext(), msg, Toast.LENGTH_SHORT).show()
-//                        }
+                        context.requireActivity().runOnUiThread {
+                            if (args[0] != null) {
+                                val msg = args[0] as String
+                                context.loadData()
+                                Toast.makeText(context.requireContext(), msg, Toast.LENGTH_SHORT).show()
+                            }
+                        }
                     }
                 }
             }
