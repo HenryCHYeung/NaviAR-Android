@@ -57,10 +57,15 @@ class FriendsFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loadData()
-        view.findViewById<Button>(R.id.addButton)?.setOnClickListener {
-            val intent = Intent(activity, AddActivity::class.java)
-            startActivity(intent)
+        if (userid != 0) {
+            loadData()
+            view.findViewById<Button>(R.id.addButton)?.setOnClickListener {
+                val intent = Intent(activity, AddActivity::class.java)
+                startActivity(intent)
+            }
+        } else {
+            binding.textView4.text = "Friends are only available for NYIT students."
+            view.findViewById<Button>(R.id.addButton).visibility = View.GONE
         }
     }
 

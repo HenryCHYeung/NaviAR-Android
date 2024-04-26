@@ -61,7 +61,11 @@ class EventFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loadData()
+        if (userid != 0) {
+            loadData()
+        } else {
+            binding.textView2.text = "Events are only visible to NYIT students."
+        }
         if (is_organizer == 1) {
             view.findViewById<Button>(R.id.addEvent)?.setOnClickListener {
                 val intent = Intent(activity, AddEventActivity::class.java)

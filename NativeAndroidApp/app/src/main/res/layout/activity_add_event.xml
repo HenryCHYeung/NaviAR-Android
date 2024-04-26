@@ -68,7 +68,7 @@
         android:layout_marginStart="76dp"
         android:layout_marginTop="156dp"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="textMultiLine"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/editButton" />
 
@@ -143,8 +143,8 @@
         android:id="@+id/createButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="512dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="576dp"
         android:text="Create"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
