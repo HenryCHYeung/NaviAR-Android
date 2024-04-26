@@ -1,6 +1,7 @@
 package com.unity.mynativeapp
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
@@ -24,10 +25,15 @@ class MainUnityActivity : OverrideUnityActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        addControlsToUnityFrame()
         val intent = intent
         locationString = intent.getStringExtra("location").toString()
         loadUnityScene(locationString)
+        sendLocationMsg(locationString)
+        if (locationString != "Naviar/Scenes/Buildings") {
+            addControlsToUnityFrame()
+        } else {
+            addControls2()
+        }
         handleIntent(intent)
     }
     private fun loadUnityScene(sceneName: String) {
@@ -82,7 +88,7 @@ class MainUnityActivity : OverrideUnityActivity() {
                             runOnUiThread {
                                 val gson = GsonBuilder().create()
                                 val locationList = gson.fromJson(allList.toString(), Array<location>::class.java).toList()
-                                val listAdapter = ArrayAdapter<location>(this@MainUnityActivity, android.R.layout.simple_list_item_1, locationList)
+                                val listAdapter = ArrayAdapter(this@MainUnityActivity, android.R.layout.simple_list_item_1, locationList)
                                 listView.adapter = listAdapter
                                 listView.setOnItemClickListener { parent, view, position, id ->
                                     selectedLoc = locationList[position]
@@ -94,17 +100,19 @@ class MainUnityActivity : OverrideUnityActivity() {
                     return false
                 }
             })
-            searchView.x = 10f
-            searchView.y = 500f
-            listView.x = 20f
-            listView.y = 700f
-            layout.addView(searchView, 300, 200)
-            layout.addView(listView, 300, 200)
+            searchView.x = 25f
+            searchView.y = 100f
+            searchView.setBackgroundColor(Color.WHITE)
+            listView.x = 25f
+            listView.y = 200f
+            listView.setBackgroundColor(Color.WHITE)
+            layout.addView(searchView, 920, 100)
+            layout.addView(listView, 920, 300)
         }
         run {
             val myButton = Button(this)
             myButton.text = "Search"
-            myButton.x = 320f
+            myButton.x = 25f
             myButton.y = 500f
             myButton.setOnClickListener {
                 Log.d("checkString",locationString)
@@ -114,18 +122,28 @@ class MainUnityActivity : OverrideUnityActivity() {
         }
         run {
             val myButton = Button(this)
-            myButton.text = "Unload"
-            myButton.x = 630f
+            myButton.text = "Return"
+            myButton.x = 335f
             myButton.y = 500f
-            myButton.setOnClickListener { mUnityPlayer.unload() }
+            myButton.setOnClickListener {
+                locationString = ""
+                finish()
+            }
             layout.addView(myButton, 300, 200)
         }
+    }
+
+    fun addControls2() {
+        val layout: FrameLayout = mUnityPlayer
         run {
             val myButton = Button(this)
-            myButton.text = "Finish"
-            myButton.x = 630f
+            myButton.text = "Return"
+            myButton.x = 335f
             myButton.y = 800f
-            myButton.setOnClickListener { finish() }
+            myButton.setOnClickListener {
+                locationString = ""
+                finish()
+            }
             layout.addView(myButton, 300, 200)
         }
     }

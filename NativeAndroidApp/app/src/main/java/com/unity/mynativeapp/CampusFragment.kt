@@ -104,9 +104,13 @@ class CampusFragment : Fragment() {
         })
 
         view.findViewById<Button>(R.id.unityButton2)?.setOnClickListener {
-            val intent = Intent(activity, MainUnityActivity::class.java)
-            intent.putExtra("location", unityString)
-            startActivity(intent)
+            if (unityString == "") {
+                Toast.makeText(requireContext(), "Please select a location", Toast.LENGTH_SHORT).show()
+            } else {
+                val intent = Intent(activity, MainUnityActivity::class.java)
+                intent.putExtra("location", unityString)
+                startActivity(intent)
+            }
         }
     }
 

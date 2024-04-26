@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
-            android:layout_marginTop="520dp"
+            android:layout_marginTop="580dp"
             android:background="@color/buttonColor"
             android:text="Go to map" />
     </RelativeLayout>

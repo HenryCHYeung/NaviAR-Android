@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Naviar/Scenes/Start.unity
     guid: 5c81585b6eff96b46b548e23ae99a60a
   - enabled: 1
