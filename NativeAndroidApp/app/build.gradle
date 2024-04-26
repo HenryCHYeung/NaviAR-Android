@@ -18,6 +18,7 @@ dependencies {
         exclude group: 'org.json', module: 'json'
     }
     implementation 'com.google.code.gson:gson:2.10.1'
+    //implementation(platform("org.jetbrains.kotlin:kotlin-ksp:1.4.0-rc-dev-experimental-20200828"))
 }
 
 

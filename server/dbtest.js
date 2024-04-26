@@ -1,5 +1,5 @@
 const express = require("express");
-const PORT = process.env.PORT || 3000;  // PORT depends on environment, or 3001 if there is none
+const PORT = process.env.PORT || 3030;  // PORT depends on environment, or 3001 if there is none
 const socket = require("socket.io");
 const sqlite = require("sqlite3")
 const app = express();

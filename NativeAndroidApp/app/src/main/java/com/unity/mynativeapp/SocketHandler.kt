@@ -17,7 +17,7 @@ object SocketHandler {
 // This will allow your Android Emulator and physical device at your home to connect to the server
             //https://naviar.susderp.com
 
-            mSocket = IO.socket("http://10.0.2.2:3000")
+            mSocket = IO.socket("http://64.187.245.170:3030")
         } catch (e: URISyntaxException) {
 
         }
