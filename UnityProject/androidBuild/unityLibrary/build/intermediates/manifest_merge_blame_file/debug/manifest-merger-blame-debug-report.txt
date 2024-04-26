@@ -1,0 +1,166 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    xmlns:tools="http://schemas.android.com/tools"
+4    package="com.unity3d.player" >
+5
+6    <uses-sdk
+7        android:minSdkVersion="25"
+7-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml
+8        android:targetSdkVersion="32" />
+8-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml
+9
+10    <uses-permission android:name="android.permission.INTERNET" />
+10-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:3:3-65
+10-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:3:20-62
+11    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+11-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:4:3-77
+11-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:4:20-74
+12    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+12-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:5:3-79
+12-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:5:20-76
+13
+14    <uses-feature android:glEsVersion="0x00030000" />
+14-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:6:3-52
+14-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:6:17-49
+15    <uses-feature
+15-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:7:3-89
+16        android:name="android.hardware.location.gps"
+16-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:7:17-61
+17        android:required="false" />
+17-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:7:62-86
+18    <uses-feature
+18-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:8:3-85
+19        android:name="android.hardware.location"
+19-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:8:17-57
+20        android:required="false" />
+20-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:8:58-82
+21    <uses-feature
+21-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:9:3-88
+22        android:name="android.hardware.touchscreen"
+22-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:9:17-60
+23        android:required="false" />
+23-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:9:61-85
+24    <uses-feature
+24-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:10:3-99
+25        android:name="android.hardware.touchscreen.multitouch"
+25-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:10:17-71
+26        android:required="false" />
+26-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:10:72-96
+27    <uses-feature
+27-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:11:3-108
+28        android:name="android.hardware.touchscreen.multitouch.distinct"
+28-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:11:17-80
+29        android:required="false" />
+29-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:11:81-105
+30
+31    <uses-permission android:name="android.permission.CAMERA" />
+31-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:29:3-63
+31-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:29:20-60
+32
+33    <uses-feature
+33-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:30:3-85
+34        android:name="android.hardware.camera.ar"
+34-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:30:17-58
+35        android:required="true" />
+35-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:30:59-82
+36    <uses-feature
+36-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:31:3-83
+37        android:name="com.google.ar.core.depth"
+37-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:31:17-56
+38        android:required="true" />
+38-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:31:57-80
+39
+40    <application android:extractNativeLibs="true" >
+40-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:12:3-28:17
+40-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:12:16-48
+41        <meta-data
+41-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:13:5-69
+42            android:name="unity.splash-mode"
+42-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:13:16-48
+43            android:value="0" />
+43-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:13:49-66
+44        <meta-data
+44-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:14:5-74
+45            android:name="unity.splash-enable"
+45-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:14:16-50
+46            android:value="True" />
+46-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:14:51-71
+47        <meta-data
+47-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:15:5-78
+48            android:name="unity.launch-fullscreen"
+48-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:15:16-54
+49            android:value="True" />
+49-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:15:55-75
+50        <meta-data
+50-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:16:5-81
+51            android:name="notch.config"
+51-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:16:16-43
+52            android:value="portrait|landscape" />
+52-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:16:44-78
+53        <meta-data
+53-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:17:5-84
+54            android:name="unity.auto-report-fully-drawn"
+54-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:17:16-60
+55            android:value="true" />
+55-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:17:61-81
+56
+57        <activity
+57-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:18:5-25:16
+58            android:name="com.unity3d.player.UnityPlayerActivity"
+58-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:18:15-68
+59            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+59-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:18:180-361
+60            android:exported="true"
+60-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:18:432-455
+61            android:hardwareAccelerated="true"
+61-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:18:397-431
+62            android:launchMode="singleTask"
+62-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:18:148-179
+63            android:resizeableActivity="false"
+63-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:18:362-396
+64            android:screenOrientation="portrait"
+64-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:18:111-147
+65            android:theme="@style/UnityThemeSelector"
+65-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:18:69-110
+66            android:windowSoftInputMode="adjustPan" >
+66-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:18:456-495
+67            <intent-filter>
+67-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:19:7-22:23
+68                <category android:name="android.intent.category.LAUNCHER" />
+68-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:20:9-69
+68-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:20:19-66
+69
+70                <action android:name="android.intent.action.MAIN" />
+70-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:21:9-61
+70-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:21:17-58
+71            </intent-filter>
+72
+73            <meta-data
+73-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:23:7-82
+74                android:name="unityplayer.UnityActivity"
+74-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:23:18-58
+75                android:value="true" />
+75-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:23:59-79
+76            <meta-data
+76-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:24:7-70
+77                android:name="notch_support"
+77-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:24:18-46
+78                android:value="true" />
+78-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:24:47-67
+79        </activity>
+80
+81        <meta-data
+81-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:26:5-88
+82            android:name="unityplayer.SkipPermissionsDialog"
+82-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:26:16-64
+83            android:value="true" />
+83-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:26:65-85
+84        <meta-data
+84-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:27:5-77
+85            android:name="com.google.ar.core"
+85-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:27:16-49
+86            android:value="required" />
+86-->C:\Users\jason\Desktop\NaviAR-Android\UnityProject\androidBuild\unityLibrary\src\main\AndroidManifest.xml:27:50-74
+87    </application>
+88
+89</manifest>

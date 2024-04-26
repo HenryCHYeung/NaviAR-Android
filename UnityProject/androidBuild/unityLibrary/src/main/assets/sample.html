@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Application</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="searchInput" placeholder="Search for a place">
+    <button onclick="search()">Search</button>
+    <button id="getDirectionBtn">Get Direction</button>
+    <div id="map"></div>
+    <div id="distance"></div>
+    
+<script src="sample.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3ujK1bvmnIOIgKVRnRi7ycgy2QvIWrAY&libraries=places,geometry&callback=initialize" async defer></script>
+</body>
+</html>

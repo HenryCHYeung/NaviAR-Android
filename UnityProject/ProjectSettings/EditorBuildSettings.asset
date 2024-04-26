@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Naviar/Scenes/Start.unity
+    guid: 5c81585b6eff96b46b548e23ae99a60a
+  - enabled: 1
+    path: Assets/Naviar/Scenes/Buildings.unity
+    guid: 5a6b557c688df9948a8a406037451aeb
+  - enabled: 1
+    path: Assets/Naviar/Scenes/16W. 61st Street/16W. 61st StreetLobby.unity
+    guid: 759e202000b32f045a76d59533a475ee
+  - enabled: 1
+    path: Assets/Naviar/Scenes/16W. 61st Street/16W. 61st Street6.unity
+    guid: c3b31d42a1691624d983b83ab929cd25
+  - enabled: 1
+    path: Assets/Naviar/Scenes/16W. 61st Street/16W. 61st Street7.unity
+    guid: 5cd9511eb29c8a742ab593c3821fda28
+  - enabled: 1
+    path: Assets/Naviar/Scenes/16W. 61st Street/16W. 61st Street8.unity
+    guid: dff4ca6e7ee87e84f80115817bda7ac4
+  - enabled: 1
+    path: Assets/Naviar/Scenes/16W. 61st Street/16W. 61st Street9.unity
+    guid: c03e588376f90e640ab293b6ddb335ee
+  - enabled: 1
+    path: Assets/Naviar/Scenes/16W. 61st Street/16W. 61st Street10.unity
+    guid: 678e44afab2a9984dbfc1dc7f0c1f75c
+  - enabled: 1
+    path: Assets/Naviar/Scenes/16W. 61st Street/16W. 61st Street11.unity
+    guid: e20b4cbc27b85254893db7134c5edc13
+  - enabled: 1
+    path: Assets/Naviar/Scenes/26W. 61st Street/26W. 61st Street0.unity
+    guid: 96402d39d8cb6c84db25efdb1d171103
+  - enabled: 1
+    path: Assets/Naviar/Scenes/26W. 61st Street/26W. 61st StreetMezzanine.unity
+    guid: ec8540ffd15e15744989d53c6ef1fd38
+  - enabled: 1
+    path: Assets/Naviar/Scenes/26W. 61st Street/26W. 61st Street1.unity
+    guid: 6867ff7145832ae43911126ac7b74340
+  - enabled: 1
+    path: Assets/Naviar/Scenes/26W. 61st Street/26W. 61st Street2.unity
+    guid: 3e5e62ab3d56288438495c3bd10dd96f
+  - enabled: 1
+    path: Assets/Naviar/Scenes/26W. 61st Street/26W. 61st Street3.unity
+    guid: 10a98eddc4e3a6c4e9f3291bc2d1d422
+  - enabled: 1
+    path: Assets/Naviar/Scenes/26W. 61st Street/26W. 61st Street4.unity
+    guid: 7454925e675c95641b19e90ac091c1de
+  - enabled: 1
+    path: Assets/Naviar/Scenes/26W. 61st Street/26W. 61st Street5.unity
+    guid: 5cddbc918ef9409409e39a7af5853a32
+  - enabled: 1
+    path: Assets/Naviar/Scenes/Edward Guiliano Global Center 1855 Broadway/Edward
+      Guiliano Global Center 1855 Broadway2.unity
+    guid: 69c884ded055d204d8afa801add0227e
+  - enabled: 1
+    path: Assets/Naviar/Scenes/Edward Guiliano Global Center 1855 Broadway/Edward
+      Guiliano Global Center 1855 Broadway3.unity
+    guid: 27b86394a8eadd944b1bbfb1a5c517bd
+  - enabled: 1
+    path: Assets/Naviar/Scenes/Edward Guiliano Global Center 1855 Broadway/Edward
+      Guiliano Global Center 1855 Broadway4.unity
+    guid: a6c0257d56132a149a2938b1a684799a
+  - enabled: 1
+    path: Assets/Naviar/Scenes/Edward Guiliano Global Center 1855 Broadway/Edward
+      Guiliano Global Center 1855 Broadway5.unity
+    guid: 2677e2b36997ed748928a907dcbbda2e
+  - enabled: 1
+    path: Assets/Naviar/Scenes/Edward Guiliano Global Center 1855 Broadway/Edward
+      Guiliano Global Center 1855 Broadway6.unity
+    guid: 0997a68fdf4b4b242a467f6636e299a8
+  - enabled: 1
+    path: Assets/Naviar/Scenes/Edward Guiliano Global Center 1855 Broadway/Edward
+      Guiliano Global Center 1855 Broadway7.unity
+    guid: 4e1314e1ed6105e489a2cba86adcf2bc
+  - enabled: 1
+    path: Assets/Naviar/Scenes/Edward Guiliano Global Center 1855 Broadway/Edward
+      Guiliano Global Center 1855 Broadway8.unity
+    guid: fa24d4086854acb42bb8111438ae8b56
+  - enabled: 1
+    path: Assets/Naviar/Scenes/Edward Guiliano Global Center 1855 Broadway/Edward
+      Guiliano Global Center 1855 Broadway9.unity
+    guid: fc767051161330c4ba4128805ed46420
+  - enabled: 1
+    path: Assets/Naviar/Scenes/Edward Guiliano Global Center 1855 Broadway/Edward
+      Guiliano Global Center 1855 Broadway10.unity
+    guid: 81ab91442de2e114dadd5c1fa0f1457a
+  - enabled: 1
+    path: Assets/Naviar/Scenes/Edward Guiliano Global Center 1855 Broadway/Edward
+      Guiliano Global Center 1855 Broadway11.unity
+    guid: 9511026f923977b4ca1b682f9a8d8274
+  m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: ab60e00a215f5c0499ff2db2c409b873,
+      type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 833ffeeb9e4f4164e91b91a5b1734747,
+      type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 5fbc72921e6755e41b1024e0f44532a8,
+      type: 2}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: c665d5934c1c8b9449decef2ff927a94,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 536fe5ac9e22f8d4b851b70e515a461f,
+      type: 2}
