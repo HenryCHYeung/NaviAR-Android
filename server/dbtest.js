@@ -119,23 +119,23 @@ io.on('connection', function(socket) {
 
   socket.on('rejectRequest', async function(userID, otherID) {
     await db_run('DELETE FROM Friendship WHERE requestor = ? AND receiver = ?', [otherID, userID]);
-    socket.emit('rejectRequest', "Deleted");
+    socket.emit('rejectRequest', "Request rejected");
   });
 
   socket.on('acceptRequest', async function(userID, otherID) {
     await db_run('UPDATE Friendship SET f_status = "areFriends" WHERE requestor = ? AND receiver = ?', [otherID, userID]);
-    socket.emit('acceptRequest', "Accepted");
+    socket.emit('acceptRequest', "Request accepted");
   });
 
   socket.on('cancelRequest', async function(userID, otherID) {
     await db_run('DELETE FROM Friendship WHERE requestor = ? AND receiver = ?', [userID, otherID]);
-    socket.emit('cancelRequest', "Cancelled");
+    socket.emit('cancelRequest', "Request canceled");
   });
 
   socket.on('unfriend', async function(userID, otherID) {
     var unfriendQuery = 'DELETE FROM Friendship WHERE (requestor = ? AND receiver = ?) OR (requestor = ? AND receiver = ?)';
     await db_run(unfriendQuery, [userID, otherID, otherID, userID]);
-    socket.emit('unfriend', "Unfriended");
+    socket.emit('unfriend', "Friend has been removed");
   });
 
   socket.on('getBuildings', async function() {
@@ -223,7 +223,7 @@ io.on('connection', function(socket) {
     var msg = "";
     try {
       await db_run('INSERT INTO Event_Participants VALUES(?, ?)', [eventName, userid]);
-      msg = "Joined";
+      msg = "Registration successful.";
     } catch(e) {
       if (e.message.includes("UNIQUE constraint failed")) {
         msg = "You have already joined this event."

@@ -57,10 +57,15 @@ class FriendsFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loadData()
-        view.findViewById<Button>(R.id.addButton)?.setOnClickListener {
-            val intent = Intent(activity, AddActivity::class.java)
-            startActivity(intent)
+        if (userid != 0) {
+            loadData()
+            view.findViewById<Button>(R.id.addButton)?.setOnClickListener {
+                val intent = Intent(activity, AddActivity::class.java)
+                startActivity(intent)
+            }
+        } else {
+            binding.textView4.text = "Friends are only available for NYIT students."
+            view.findViewById<Button>(R.id.addButton).visibility = View.GONE
         }
     }
 
@@ -74,7 +79,7 @@ class FriendsFragment : Fragment() {
                 val receivedRequests = args[1] as JSONArray     // People that sent friend requests to the user (can accept or reject)
                 val currentFriends = args[2] as JSONArray       // Current friends of the user (can unfriend)
 
-                requireActivity().runOnUiThread {
+                runOnUiThread {
                     val gson = GsonBuilder().create()
                     val sentRequestsList = gson.fromJson(sentRequests.toString(), Array<friend>::class.java).toList()
                     val receivedRequestsList = gson.fromJson(receivedRequests.toString(), Array<friend>::class.java).toList()
@@ -96,7 +101,7 @@ class FriendsFragment : Fragment() {
 
 
     fun reloadFragment() {
-        loadData();
+        loadData()
     }
 
 

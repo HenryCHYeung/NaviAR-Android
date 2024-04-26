@@ -61,6 +61,22 @@ class EventFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (userid != 0) {
+            loadData()
+        } else {
+            binding.textView2.text = "Events are only visible to NYIT students."
+        }
+        if (is_organizer == 1) {
+            view.findViewById<Button>(R.id.addEvent)?.setOnClickListener {
+                val intent = Intent(activity, AddEventActivity::class.java)
+                startActivity(intent)
+            }
+        } else {
+            view.findViewById<Button>(R.id.addEvent).visibility = View.GONE
+        }
+    }
+
+    fun loadData() {
         Log.d("CHECK", is_organizer.toString())
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val current = LocalDateTime.now().format(formatter)
@@ -138,15 +154,6 @@ class EventFragment : Fragment() {
                     }
                 }
             }
-        }
-
-        if (is_organizer == 1) {
-            view.findViewById<Button>(R.id.addEvent)?.setOnClickListener {
-                val intent = Intent(activity, AddEventActivity::class.java)
-                startActivity(intent)
-            }
-        } else {
-            view.findViewById<Button>(R.id.addEvent).visibility = View.GONE
         }
     }
 
