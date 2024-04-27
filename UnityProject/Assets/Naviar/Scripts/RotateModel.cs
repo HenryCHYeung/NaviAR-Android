@@ -49,6 +49,11 @@ public class RotateModel : MonoBehaviour
                     // Rotate based on delta movement
                     float rotateFactorX = -deltaPos.y * 0.1f; // Rotate around X-axis for vertical movement
                     float rotateFactorY = deltaPos.x * 0.1f; // Rotate around Y-axis for horizontal movement
+                    //clamping
+                    Quaternion newRotation = initialRotation * Quaternion.Euler(rotateFactorX, rotateFactorY, 0);
+                    Vector3 euler = newRotation.eulerAngles;
+                    euler.x = Mathf.Clamp(euler.x, 0, 270);
+                    //rotating
                     modelTransform.rotation = initialRotation * Quaternion.Euler(rotateFactorX, rotateFactorY, 0);
                     break;
 
