@@ -53,7 +53,6 @@ public class RotateModel : MonoBehaviour
                     Quaternion newRotation = initialRotation * Quaternion.Euler(rotateFactorX, rotateFactorY, 0);
                     Vector3 euler = newRotation.eulerAngles;
                     euler.x = Mathf.Clamp(euler.x, 0, 270);
-                    newRotation = Quaternion.Euler(euler);
                     //rotating
                     modelTransform.rotation = initialRotation * Quaternion.Euler(rotateFactorX, rotateFactorY, 0);
                     break;
