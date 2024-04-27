@@ -7,7 +7,7 @@ using TMPro;
 
 public class SensorScript : MonoBehaviour
 {
-    public TMP_Text gpsText;
+    //public TMP_Text gpsText;
     public bool isUpdating;
     private Vector3 userLocation;
     private GpsToUnity convertor;
@@ -64,7 +64,7 @@ public class SensorScript : MonoBehaviour
             transform.position= userLocation;
             // If the connection succeeded, this retrieves the device's current location and displays it in the Console window.
             //Debug.Log("Location:"+"\nLatitude:" + Input.location.lastData.latitude + "\nLongitude:" + Input.location.lastData.longitude + "\nAltitude:" + Input.location.lastData.altitude + "\nAccuracy:" + Input.location.lastData.horizontalAccuracy + "\nTime refreshed:" + Input.location.lastData.timestamp);
-            gpsText.SetText("Location:"+"\nLatitude:" + Input.location.lastData.latitude + "\nLongitude:" + Input.location.lastData.longitude + "\nAltitude:" + Input.location.lastData.altitude + "\nAccuracy:" + Input.location.lastData.horizontalAccuracy + "\nTime refreshed:" + Input.location.lastData.timestamp);
+            //gpsText.SetText("Location:"+"\nLatitude:" + Input.location.lastData.latitude + "\nLongitude:" + Input.location.lastData.longitude + "\nAltitude:" + Input.location.lastData.altitude + "\nAccuracy:" + Input.location.lastData.horizontalAccuracy + "\nTime refreshed:" + Input.location.lastData.timestamp);
         }
 
         // Stops the location service if there is no need to query location updates continuously.

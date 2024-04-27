@@ -6,6 +6,8 @@ public class Messenger : MonoBehaviour
 {
     object data;
     public string roomNum;
+    private string building;
+    private string floor;
     public string message;
     SwitchScene switchSceneScript;
     void Start(){
@@ -20,8 +22,8 @@ public class Messenger : MonoBehaviour
 
     public void sendDataToScene(string message){
         string[] tem=message.Split(",");
-        string building=tem[0];
-        string floor=tem[1];
+        building=tem[0];
+        floor=tem[1];
         roomNum=tem[2];
         switchSceneScript.changeScene(building,floor);
     }
@@ -32,5 +34,10 @@ public class Messenger : MonoBehaviour
     public void setData(object val){
         this.data=val;
     }
-
+    public string getBuilding(){
+    return building;
+   }
+   public string getFloor(){
+    return floor;
+   }
 }

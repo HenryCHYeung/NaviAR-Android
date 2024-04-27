@@ -84,8 +84,6 @@ public class SetNavigation : MonoBehaviour
         }
       }
       if(navTargetObjects.Count !=0 && finish && (currentScene.name.Equals("Naviar/Scenes/Buildings"))){
-        TMP_Text g= GameObject.Find("gps").GetComponent<TMP_Text>();
-        g.SetText("Nav Target true");
         lineToggle=true;
         }
       }
