@@ -138,8 +138,8 @@ class MainUnityActivity : OverrideUnityActivity() {
         run {
             val myButton = Button(this)
             myButton.text = "Return"
-            myButton.x = 335f
-            myButton.y = 800f
+            myButton.x = 350f
+            myButton.y = 1800f
             myButton.setOnClickListener {
                 locationString = ""
                 finish()

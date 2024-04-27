@@ -47,7 +47,7 @@ public class SetNavigation : MonoBehaviour
   
     // Update is called once per frame
     void Update(){
-      if (pathFields.transform.childCount!=0 && pathFields != null && currentScene.name.Equals("Naviar/Scenes/Buildings")) {
+      if (currentScene.name.Equals("Naviar/Scenes/Buildings") && pathFields.transform.childCount!=0 && pathFields != null) {
           int childCountPathFields = pathFields.transform.childCount;
           for (int i = 0; i < childCountPathFields; i++){
             GameObject currentChild = pathFields.transform.GetChild(i).gameObject;
@@ -85,6 +85,8 @@ public class SetNavigation : MonoBehaviour
       }
       if(navTargetObjects.Count !=0 && finish && (currentScene.name.Equals("Naviar/Scenes/Buildings"))){
         lineToggle=true;
+        TMP_Text g= GameObject.Find("gps").GetComponent<TMP_Text>();
+        g.SetText("");
         }
       }
     }   

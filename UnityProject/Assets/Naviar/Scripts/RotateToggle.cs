@@ -39,7 +39,7 @@ public class RotateToggle : MonoBehaviour
         Scene currentScene=SceneManager.GetActiveScene();
 
         if(currentScene.name.Equals("Naviar/Scenes/Edward Guiliano Global Center 1855 Broadway/"+"Edward Guiliano Global Center 1855 Broadway"+floor)){
-            rotateScript.modelTransform.rotation = Quaternion.Euler(0, 180, 0);
+            rotateScript.modelTransform.rotation = Quaternion.Euler(0, -180, 0);
         }else{
             rotateScript.modelTransform.rotation = Quaternion.Euler(0, -90, 0);
         }
