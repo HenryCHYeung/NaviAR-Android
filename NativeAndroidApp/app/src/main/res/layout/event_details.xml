@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Event Title"
-                android:textSize="40sp"
+                android:textSize="35sp"
                 android:textColor="#fff"
                 android:layout_gravity="center"
                 tools:layout_editor_absoluteX="112dp"
@@ -55,7 +55,7 @@
                 android:textSize="19sp"
                 android:textColor="#fff"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="15dp" />
         </LinearLayout>
 
         </LinearLayout>
@@ -196,6 +196,7 @@
         android:layout_marginTop="5dp" />
 
         <Button
+            android:id="@+id/joinEvent"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"

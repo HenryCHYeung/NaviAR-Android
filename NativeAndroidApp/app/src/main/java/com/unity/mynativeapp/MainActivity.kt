@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         SocketHandler.establishConnection()
 
         val guestLogin = findViewById<Button>(R.id.guestLogin)
-        val userLogin = findViewById<Button>(R.id.button)
+        val userLogin = findViewById<Button>(R.id.loginButton)
         val mSocket = SocketHandler.getSocket()
         guestLogin.setOnClickListener {
             val intent = Intent(this, UiActivity::class.java)

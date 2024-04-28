@@ -221,6 +221,10 @@ class AddEventActivity : AppCompatActivity() {
                                             builder.setNegativeButton("Cancel") { dialog, which -> dialog.dismiss() }
                                             builder.show()
                                         } else {
+                                            if (msg == "Event created successfully.") {
+                                                Toast.makeText(this@AddEventActivity, msg, Toast.LENGTH_SHORT).show()
+                                                finish()
+                                            }
                                             errorText.text = msg
                                         }
                                     }
