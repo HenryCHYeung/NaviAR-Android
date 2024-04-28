@@ -44,6 +44,11 @@ class EventFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        loadData()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -130,6 +135,7 @@ class EventFragment : Fragment() {
                             val eventRoom = eventObject.room_no
                             val eventDesc = eventObject.event_desc
                             val eventOrganizer = eventObject.first_name + " " + eventObject.last_name
+                            val organizerID = eventObject.organizer
 
                             val peopleInEvent: MutableList<String> = if (userStart > 1 && position < userStart) {
                                 peoplePerEventList[position - 1]
@@ -149,6 +155,8 @@ class EventFragment : Fragment() {
                             intent.putExtra("desc", eventDesc)
                             intent.putExtra("organizer", eventOrganizer)
                             intent.putExtra("people", peopleInEvent.toTypedArray())
+                            intent.putExtra("organizerID", organizerID)
+                            intent.putExtra("studentID", userid)
                             startActivity(intent)
                         }
                     }

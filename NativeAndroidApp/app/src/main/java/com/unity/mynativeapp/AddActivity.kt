@@ -36,6 +36,9 @@ class AddActivity : AppCompatActivity() {
                         toastMessage?.cancel()
                         toastMessage = Toast.makeText(this@AddActivity, msg, Toast.LENGTH_SHORT)
                         toastMessage!!.show()
+                        if (msg.contains("A friend request has been sent to")) {
+                            finish()
+                        }
                     }
                 }
             }
