@@ -7,84 +7,184 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".DetailsEvent">
 
-    <TextView
-        android:id="@+id/eventTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Event Title"
-        android:textSize="40sp"
-        tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="16dp" />
+<LinearLayout
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/eventStart"
-        android:text="Start Time: 2024-04-25 12:30"
-        android:textSize="25sp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/eventTitle"/>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailsEvent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/eventEnd"
-        android:text="End Time: 2024-04-25 14:30"
-        android:textSize="25sp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/eventStart"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="#1EA4DA" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/building"
-        android:text="Building: Edward Guiliano Global Center/1855 Broadway"
-        android:textSize="25sp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/eventEnd"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/roomNo"
-        android:text="Room: 401A"
-        android:textSize="25sp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/building"/>
+            <TextView
+                android:id="@+id/eventTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Event Title"
+                android:textSize="40sp"
+                android:textColor="#fff"
+                android:layout_gravity="center"
+                tools:layout_editor_absoluteX="112dp"
+                tools:layout_editor_absoluteY="16dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/organizer"
-        android:text="Organizer: Henry Yeung"
-        android:textSize="25sp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/roomNo"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/description"
-        android:text="Description: Learn more about FAFSA, HESC, and scholarships."
-        android:textSize="25sp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/organizer"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/baseline_access_time_24" />
 
-    <TextView
-        android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/eventTime"
+                android:text="Start Time: 2024-04-25 12:30"
+                android:textSize="19sp"
+                android:textColor="#fff"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp" />
+        </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:orientation="vertical"
         android:layout_height="wrap_content"
-        android:id="@+id/friendState"
-        android:text="Current Participants:"
-        android:textSize="25sp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/description"/>
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/baseline_place_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/building"
+                android:text="Building: Edward Guiliano Global Center/1855 Broadway"
+                android:textSize="25sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp" />
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="9dp"
+            android:src="@drawable/baseline_meeting_room_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/roomNo"
+            android:text="Room: 401A"
+            android:textSize="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="6dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/baseline_person_pin_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/organizer"
+            android:text="Organizer: Henry Yeung"
+            android:textSize="25sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="24dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="34dp"
+            android:src="@drawable/baseline_event_note_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/description"
+            android:text="Description: Learn more about FAFSA, HESC, and scholarships."
+            android:textSize="25sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="23dp"
+            android:src="@drawable/baseline_friend_alt_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/friendState"
+            android:text="Current Participants:"
+            android:textSize="25sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+
+
+
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -93,7 +193,19 @@
         android:text="Henry Yeung, Guang Too, Christian Pascal"
         android:textSize="25sp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@+id/friendState"/>
+        android:layout_marginTop="5dp" />
 
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@color/buttonColor"
+            android:layout_marginTop="75dp"
+            android:text="Join">
+
+        </Button>
+
+</LinearLayout>
+
+</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

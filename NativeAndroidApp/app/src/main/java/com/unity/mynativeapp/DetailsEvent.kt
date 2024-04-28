@@ -13,17 +13,21 @@ class DetailsEvent: AppCompatActivity() {
         setContentView(binding.root)
 
         val eventName = "Name: " + intent.getStringExtra("title")
-        val eventStart = "Start Time: " + intent.getStringExtra("start")
-        val eventEnd = "End Time: " + intent.getStringExtra("end")
+        val eventTime = "Time: " + intent.getStringExtra("start") + " - " + intent.getStringExtra("end")
         val eventBuilding = "Building: " + intent.getStringExtra("building")
         val eventRoom = "Room: " + intent.getStringExtra("room")
         val eventDesc = "Description:\n" + intent.getStringExtra("desc")
         val eventOrganizer = "Organizer: " + intent.getStringExtra("organizer")
-        val eventPeople = intent.getStringArrayExtra("people")!!.joinToString()
+        var eventPeople = "None!"
+        val peopleArray = intent.getStringArrayExtra("people")
+        if (peopleArray != null && peopleArray.isNotEmpty()) {
+            // If the array is not null and not empty
+            eventPeople = peopleArray.joinToString()
+            // Now you can use eventPeople
+        }
 
         binding.eventTitle.text = eventName
-        binding.eventStart.text = eventStart
-        binding.eventEnd.text = eventEnd
+        binding.eventTime.text = eventTime
         binding.building.text = eventBuilding
         binding.roomNo.text = eventRoom
         binding.description.text = eventDesc

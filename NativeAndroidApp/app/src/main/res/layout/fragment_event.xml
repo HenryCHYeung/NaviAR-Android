@@ -32,11 +32,10 @@
         style="@style/ButtonStyle"
         android:layout_width="133dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="324dp"
         android:background="@color/buttonColor"
         android:text="Create an Event"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/listview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
