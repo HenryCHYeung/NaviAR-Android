@@ -1043,7 +1043,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 22
+  orthographic size: 35
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -4191,7 +4191,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.13333334
+  m_VoxelSize: 0.06666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 05a21112cac22e64f96b98be59fc1482, type: 2}
   m_BuildHeightMesh: 0

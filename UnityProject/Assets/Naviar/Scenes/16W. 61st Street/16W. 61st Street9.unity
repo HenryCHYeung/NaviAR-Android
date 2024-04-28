@@ -3999,6 +3999,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopDownCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 6373612316174105232, guid: 89e5dea73f050d94e83580a74d5d7381,
+        type: 3}
+      propertyPath: orthographic size
+      value: 35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4608,7 +4613,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.13333334
+  m_VoxelSize: 0.06666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: d7b9c302c974ec0499afc55ff70b2efc, type: 2}
   m_BuildHeightMesh: 0

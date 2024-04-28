@@ -110,10 +110,6 @@ struct Byte_t94D9231AC217BE4D2E004C4CD32DF6D099EA41A3
 {
 	uint8_t ___m_value;
 };
-struct Double_tE150EF3D1D43DEE85D533810AB4C742307EEDE5F 
-{
-	double ___m_value;
-};
 struct Enum_t2A1A94B24E3B776EEF4E5E485E290BB9D4D072E2  : public ValueType_t6D9B272BD21782F0A9A14F2E41F85A50E97A986F
 {
 };
@@ -578,9 +574,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Touch_get_radius_m5BC9C50DABBB17B07742B
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Touch_get_radiusVariance_m6F54BE964B91C3B2F8FA2A483E1FDB644B282B21 (Touch_t03E51455ED508492B3F278903A0114FA0E87B417* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float LocationInfo_get_latitude_mAF0A46443555AF18EA3C516292CB92B1669CA863 (LocationInfo_tBFD49220A54B71CDF564F61822F7B8D524465441* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float LocationInfo_get_longitude_mCB720DD0E139B7C614F78D40595E1BBF1F5433A2 (LocationInfo_tBFD49220A54B71CDF564F61822F7B8D524465441* __this, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float LocationInfo_get_altitude_m3B4BE2F447F3599F5677DD72A86C3A1A801ABAE0 (LocationInfo_tBFD49220A54B71CDF564F61822F7B8D524465441* __this, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float LocationInfo_get_horizontalAccuracy_m3178154DD5F4F72B8743665F33CCAE5BEC6296F4 (LocationInfo_tBFD49220A54B71CDF564F61822F7B8D524465441* __this, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR double LocationInfo_get_timestamp_mAD1095E60A61DF0FA66195AA06A0F801CF9BDC9F (LocationInfo_tBFD49220A54B71CDF564F61822F7B8D524465441* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LocationService_GetLastLocation_Injected_m2463D5B46B8E9CA2C10AB3E611CD176BE7C3D472 (LocationInfo_tBFD49220A54B71CDF564F61822F7B8D524465441* ___0_ret, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LocationService_GetLastHeading_Injected_m6BC975D8809617948C105507082D3273FBDF0539 (HeadingInfo_tDE66705847BB57D5815F1D570980E7C306B513BC* ___0_ret, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool LocationService_IsServiceEnabledByUser_m88DF3FEBB0B816F0D90E4972630D95714E5DDEDF (const RuntimeMethod* method) ;
@@ -1164,78 +1157,6 @@ IL2CPP_EXTERN_C  float LocationInfo_get_longitude_mCB720DD0E139B7C614F78D40595E1
 	_thisAdjusted = reinterpret_cast<LocationInfo_tBFD49220A54B71CDF564F61822F7B8D524465441*>(__this + _offset);
 	float _returnValue;
 	_returnValue = LocationInfo_get_longitude_mCB720DD0E139B7C614F78D40595E1BBF1F5433A2(_thisAdjusted, method);
-	return _returnValue;
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float LocationInfo_get_altitude_m3B4BE2F447F3599F5677DD72A86C3A1A801ABAE0 (LocationInfo_tBFD49220A54B71CDF564F61822F7B8D524465441* __this, const RuntimeMethod* method) 
-{
-	float V_0 = 0.0f;
-	{
-		float L_0 = __this->___m_Altitude;
-		V_0 = L_0;
-		goto IL_000a;
-	}
-
-IL_000a:
-	{
-		float L_1 = V_0;
-		return L_1;
-	}
-}
-IL2CPP_EXTERN_C  float LocationInfo_get_altitude_m3B4BE2F447F3599F5677DD72A86C3A1A801ABAE0_AdjustorThunk (RuntimeObject* __this, const RuntimeMethod* method)
-{
-	LocationInfo_tBFD49220A54B71CDF564F61822F7B8D524465441* _thisAdjusted;
-	int32_t _offset = 1;
-	_thisAdjusted = reinterpret_cast<LocationInfo_tBFD49220A54B71CDF564F61822F7B8D524465441*>(__this + _offset);
-	float _returnValue;
-	_returnValue = LocationInfo_get_altitude_m3B4BE2F447F3599F5677DD72A86C3A1A801ABAE0(_thisAdjusted, method);
-	return _returnValue;
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float LocationInfo_get_horizontalAccuracy_m3178154DD5F4F72B8743665F33CCAE5BEC6296F4 (LocationInfo_tBFD49220A54B71CDF564F61822F7B8D524465441* __this, const RuntimeMethod* method) 
-{
-	float V_0 = 0.0f;
-	{
-		float L_0 = __this->___m_HorizontalAccuracy;
-		V_0 = L_0;
-		goto IL_000a;
-	}
-
-IL_000a:
-	{
-		float L_1 = V_0;
-		return L_1;
-	}
-}
-IL2CPP_EXTERN_C  float LocationInfo_get_horizontalAccuracy_m3178154DD5F4F72B8743665F33CCAE5BEC6296F4_AdjustorThunk (RuntimeObject* __this, const RuntimeMethod* method)
-{
-	LocationInfo_tBFD49220A54B71CDF564F61822F7B8D524465441* _thisAdjusted;
-	int32_t _offset = 1;
-	_thisAdjusted = reinterpret_cast<LocationInfo_tBFD49220A54B71CDF564F61822F7B8D524465441*>(__this + _offset);
-	float _returnValue;
-	_returnValue = LocationInfo_get_horizontalAccuracy_m3178154DD5F4F72B8743665F33CCAE5BEC6296F4(_thisAdjusted, method);
-	return _returnValue;
-}
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR double LocationInfo_get_timestamp_mAD1095E60A61DF0FA66195AA06A0F801CF9BDC9F (LocationInfo_tBFD49220A54B71CDF564F61822F7B8D524465441* __this, const RuntimeMethod* method) 
-{
-	double V_0 = 0.0;
-	{
-		double L_0 = __this->___m_Timestamp;
-		V_0 = L_0;
-		goto IL_000a;
-	}
-
-IL_000a:
-	{
-		double L_1 = V_0;
-		return L_1;
-	}
-}
-IL2CPP_EXTERN_C  double LocationInfo_get_timestamp_mAD1095E60A61DF0FA66195AA06A0F801CF9BDC9F_AdjustorThunk (RuntimeObject* __this, const RuntimeMethod* method)
-{
-	LocationInfo_tBFD49220A54B71CDF564F61822F7B8D524465441* _thisAdjusted;
-	int32_t _offset = 1;
-	_thisAdjusted = reinterpret_cast<LocationInfo_tBFD49220A54B71CDF564F61822F7B8D524465441*>(__this + _offset);
-	double _returnValue;
-	_returnValue = LocationInfo_get_timestamp_mAD1095E60A61DF0FA66195AA06A0F801CF9BDC9F(_thisAdjusted, method);
 	return _returnValue;
 }
 #ifdef __clang__
