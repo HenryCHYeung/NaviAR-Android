@@ -541,8 +541,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Find places nearby NYIT campus.  Press get directions to start AR navagation.
-    \n\nWarning some routes may be inaccurate. Please use you best judgement."
+  m_text: 'Find places near the NYIT campus. Press "Get Direction" to start AR navigation.
+
+    
+
+    Warning:
+    some routes may be inaccurate. Please use your best judgement.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -838,7 +842,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.13333334
+  m_VoxelSize: 0.06666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: e7389cb4942d0a646b3c9e28cdcc9a26, type: 2}
   m_BuildHeightMesh: 0

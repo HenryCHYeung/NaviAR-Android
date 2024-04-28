@@ -47,7 +47,7 @@ public class SetNavigation : MonoBehaviour
   
     // Update is called once per frame
     void Update(){
-      if(msg.roomNum !="" && finish && (!currentScene.name.Equals("Naviar/Scenes/Buildings"))){
+      if(msg.roomNum !="" && finish && (currentScene.name!="Naviar/Scenes/Buildings")){
         //Debug.Log(msg.roomNum);
         foreach (GameObject obj in navTargetObjects){
           if(obj.name == msg.roomNum){
@@ -58,8 +58,8 @@ public class SetNavigation : MonoBehaviour
       }
     
       if(dest){
-        navCurrObject=destination; //debug line render// uncomment to test bathroom
-        lineToggle=true;//set true to calculate path //uncomment to test bathroom
+        //navCurrObject=destination; //debug line render// uncomment to test bathroom
+        //lineToggle=true;//set true to calculate path //uncomment to test bathroom
         Debug.Log("HI"+navCurrObject.name);
       }
 
@@ -72,7 +72,7 @@ public class SetNavigation : MonoBehaviour
           //Debug.Log(lineToggle+" corner: "+ path.corners.Length +" Target: "+ navCurrObject.name);
       }
 
-      if ((currentScene.name.Equals("Naviar/Scenes/Buildings")) && (pathFields != null)) {
+      if ((currentScene.name=="Naviar/Scenes/Buildings") && (pathFields != null)) {
         GameObject currentChild = pathFields.transform.GetChild(0).gameObject;
         if(currentChild!=null){
           snapper.SnapNavToNavMesh(currentChild);
@@ -84,7 +84,8 @@ public class SetNavigation : MonoBehaviour
           finish=true;
         }
       }
-      if((navTargetObjects.Count !=0) && finish && (currentScene.name.Equals("Naviar/Scenes/Buildings"))){
+      if((navTargetObjects.Count !=0) && finish && (currentScene.name=="Naviar/Scenes/Buildings")){
+        navCurrObject=navTargetObjects[0];
         lineToggle=true;
         TMP_Text g= GameObject.Find("gps").GetComponent<TMP_Text>();
         g.SetText("");
