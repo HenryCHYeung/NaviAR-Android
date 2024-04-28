@@ -337,3 +337,5 @@ INSERT INTO Locations VALUES ("26W. 61st Street", "004", "0", "Other", "Spiritua
 
 INSERT INTO Locations VALUES ("Student Activities Building 1849 Broadway", "Lounge", "1", "Other", "Student Lounge");
 UPDATE Locations SET loc_desc = "" WHERE loc_desc IS NULL;
+UPDATE Buildings SET building_name = "Edward Guiliano Global Center 1855 Broadway" WHERE building_name = "Edward Guiliano Global Center/1855 Broadway";
+UPDATE Buildings SET building_name = "Student Activities Building 1849 Broadway" WHERE building_name = "Student Activities Building/1849 Broadway";
