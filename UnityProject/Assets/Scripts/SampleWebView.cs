@@ -43,14 +43,19 @@ public class SampleWebView : MonoBehaviour
             cb: (msg) =>
             {
                 GpsToUnity gps=GameObject.Find("player").GetComponent<GpsToUnity>();
-                GameObject pointOfInterest = GameObject.Find("PointsOfInterest");
-                
+                GameObject placeObj=GameObject.Find("Place");
                 Vector3 placeVector=gps.setPointForStrings(msg);
-                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                cube.name = "Place";
-                cube.AddComponent<NavMeshAgent>();
-                cube.transform.localPosition = placeVector;
-                cube.transform.parent = pointOfInterest.transform;
+                if(placeObj!=null){//place exists
+                    placeObj.transform.localPosition = placeVector;
+                }else{
+                    GameObject pointOfInterest = GameObject.Find("PointsOfInterest");
+                    GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    cube.name = "Place";
+                    cube.AddComponent<NavMeshAgent>();
+                    cube.transform.localPosition = placeVector;
+                    cube.transform.parent = pointOfInterest.transform;
+                }
+                
                 
                 Debug.Log(string.Format("CallFromJS[{0}]", msg));
                 status.text = msg;
@@ -162,9 +167,9 @@ public class SampleWebView : MonoBehaviour
 
         //webViewObject.SetScrollbarsVisibility(true);
 
-        float webViewHeight = Screen.height / 2;
+        float webViewHeight = Screen.height / 3;
         float topMargin = Screen.height - webViewHeight;
-        webViewObject.SetMargins(5, 150, 5, Mathf.RoundToInt(topMargin)+10);
+        webViewObject.SetMargins(5, 200, 5, Mathf.RoundToInt(topMargin)+10);
 
         webViewObject.SetTextZoom(100);  // android only. cf. https://stackoverflow.com/questions/21647641/android-webview-set-font-size-system-default/47017410#47017410
         webViewObject.SetVisibility(true);

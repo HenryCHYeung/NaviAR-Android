@@ -47,19 +47,16 @@ public class SetNavigation : MonoBehaviour
   
     // Update is called once per frame
     void Update(){
-      if (currentScene.name.Equals("Naviar/Scenes/Buildings") && pathFields.transform.childCount!=0 && pathFields != null) {
-          int childCountPathFields = pathFields.transform.childCount;
-          for (int i = 0; i < childCountPathFields; i++){
-            GameObject currentChild = pathFields.transform.GetChild(i).gameObject;
-            snapper.SnapNavToNavMesh(currentChild);
-            GameObject CurrObject = navTargetObjects[i];
-            if(!CurrObject.name.Equals(currentChild.name)){
-              navTargetObjects.Add(pathFields.transform.GetChild(i).gameObject);
-            }
+      if(msg.roomNum !="" && finish && (!currentScene.name.Equals("Naviar/Scenes/Buildings"))){
+        //Debug.Log(msg.roomNum);
+        foreach (GameObject obj in navTargetObjects){
+          if(obj.name == msg.roomNum){
+            navCurrObject=obj;
           }
-          finish=true;
+          lineToggle=true;
+        }
       }
-      
+    
       if(dest){
         navCurrObject=destination; //debug line render// uncomment to test bathroom
         lineToggle=true;//set true to calculate path //uncomment to test bathroom
@@ -74,13 +71,17 @@ public class SetNavigation : MonoBehaviour
           line.enabled=true;//show line
           //Debug.Log(lineToggle+" corner: "+ path.corners.Length +" Target: "+ navCurrObject.name);
       }
-      if(msg.roomNum !="" && finish && (!currentScene.name.Equals("Naviar/Scenes/Buildings"))){
-        //Debug.Log(msg.roomNum);
-        foreach (GameObject obj in navTargetObjects){
-          if(obj.name == msg.roomNum){
-            navCurrObject=obj;
+
+      if ((currentScene.name.Equals("Naviar/Scenes/Buildings")) && (pathFields != null)) {
+        GameObject currentChild = pathFields.transform.GetChild(0).gameObject;
+        if(currentChild!=null){
+          snapper.SnapNavToNavMesh(currentChild);
+          foreach (GameObject obj in navTargetObjects){
+            if(!obj.name.Equals(currentChild.name)){
+              navTargetObjects.Add(currentChild);
+            }
           }
-          lineToggle=true;
+          finish=true;
         }
       }
       if(navTargetObjects.Count !=0 && finish && (currentScene.name.Equals("Naviar/Scenes/Buildings"))){
