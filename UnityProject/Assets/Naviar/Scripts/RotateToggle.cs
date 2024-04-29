@@ -40,6 +40,8 @@ public class RotateToggle : MonoBehaviour
 
         if(currentScene.name==("Naviar/Scenes/Edward Guiliano Global Center 1855 Broadway/Edward Guiliano Global Center 1855 Broadway"+floor)){
             rotateScript.modelTransform.rotation = Quaternion.Euler(0f, -180f, 0f);
+        }else if(currentScene.name==("Naviar/Scenes/26W. 61st Street/26W. 61st Street"+floor)){
+            rotateScript.modelTransform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }else{
             rotateScript.modelTransform.rotation = Quaternion.Euler(0f, -90f, 0f);
         }

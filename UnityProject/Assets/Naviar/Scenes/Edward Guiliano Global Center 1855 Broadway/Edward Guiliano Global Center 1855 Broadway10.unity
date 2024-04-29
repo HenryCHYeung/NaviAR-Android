@@ -2769,7 +2769,7 @@ PrefabInstance:
         type: 3}
       propertyPath: modelTransform
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 817886184}
     - target: {fileID: 8632332932480154058, guid: 3d475dd1c09c3cb41b0d24db3cbbb4d2,
         type: 3}
       propertyPath: m_Name
