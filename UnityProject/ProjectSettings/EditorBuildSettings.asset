@@ -33,9 +33,6 @@ EditorBuildSettings:
     path: Assets/Naviar/Scenes/16W. 61st Street/16W. 61st Street11.unity
     guid: e20b4cbc27b85254893db7134c5edc13
   - enabled: 1
-    path: Assets/Naviar/Scenes/26W. 61st Street/26W. 61st Street0.unity
-    guid: 96402d39d8cb6c84db25efdb1d171103
-  - enabled: 1
     path: Assets/Naviar/Scenes/26W. 61st Street/26W. 61st StreetMezzanine.unity
     guid: ec8540ffd15e15744989d53c6ef1fd38
   - enabled: 1

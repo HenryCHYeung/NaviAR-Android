@@ -24,9 +24,10 @@ public class SetNavigation : MonoBehaviour
     Scene currentScene;
     void Start()
     {
-      currentScene = SceneManager.GetActiveScene();
+      SceneManager.sceneLoaded += OnSceneLoaded;
       msg=GameObject.Find("Messenger").GetComponent<Messenger>();
-      pathFields = GameObject.Find("PointsOfInterest");
+      pathFields = GameObject.Find("PointofInterest");
+      Debug.Log(pathFields!=null);
       if (pathFields != null) {
           int childCountPathFields = pathFields.transform.childCount;
           for (int i = 0; i < childCountPathFields; i++){
@@ -36,9 +37,16 @@ public class SetNavigation : MonoBehaviour
       } else {
           Debug.LogError("PointsofIntrest GameObject not found!");
       }
+      currentScene = SceneManager.GetActiveScene();
       line=transform.GetComponent<LineRenderer>();//get line component from this game object
       path = new NavMeshPath();
       snapper=gameObject.GetComponent<NavMeshSnapper>();
+    }
+     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        navTargetObjects.Clear();
+        finish = false;
+        lineToggle = false;
     }
     public void setDestination(GameObject d){
       dest=true;

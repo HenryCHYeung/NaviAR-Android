@@ -68,7 +68,7 @@ public class GpsToUnity : MonoBehaviour
         double deltaLongitudeInMeters = deltaLongitude * LongitudeToMeters * System.Math.Cos(originCoordinates.x * Mathf.Deg2Rad);
         Debug.Log(deltaLatitudeInMeters+","+deltaLongitudeInMeters);
         Debug.Log("New Position in Unity Space: " + transform.position);
-        return new Vector3((float)deltaLongitudeInMeters, 0f, (float)deltaLatitudeInMeters);
+        return new Vector3((float)deltaLongitudeInMeters, -267.91f, (float)deltaLatitudeInMeters);
         //createPoint(test);
    }
 }
