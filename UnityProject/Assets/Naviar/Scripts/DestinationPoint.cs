@@ -12,10 +12,11 @@ public class DestinationPoint : MonoBehaviour
     void Start()
     {
         mainCamera=GameObject.Find("TopDownCamera").GetComponent<Camera>();
-        destination=GameObject.Find("Destination");
-        GameObject Indicator= GameObject.Find("indicator");
-        navScript = Indicator.GetComponent<SetNavigation>();
-        destination.SetActive(false);
+        mainCamera.GetComponent<DestinationPoint>().enabled=false;
+        //destination=GameObject.Find("Destination");
+        //GameObject Indicator= GameObject.Find("indicator");
+        //navScript = Indicator.GetComponent<SetNavigation>();
+        //destination.SetActive(false);
     }
     public void setRotationBool(bool value){
         rotationOn=value;

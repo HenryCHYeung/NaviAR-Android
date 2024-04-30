@@ -26,6 +26,7 @@ public class RotateToggle : MonoBehaviour
         mainCamera=GameObject.Find("TopDownCamera");
         destination=GameObject.Find("Destination");
         indicator=GameObject.Find("indicator");
+        Debug.Log(indicator.name);
         nav=indicator.GetComponent<SetNavigation>();
         rotateScript=GameObject.Find("TransformToggle").GetComponent<RotateModel>();
         isToggledOn = false;
