@@ -1,11 +1,3 @@
-{ "pid": 18252, "tid": -1, "ph": "M", "name": "process_name", "args": { "name": "BeeDriver" } },
-{ "pid": 18252, "tid": -1, "ph": "M", "name": "process_sort_index", "args": { "sort_index": "-2" } },
-{ "pid": 18252, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "Main thread" } },
-{ "pid": 18252, "tid": 1, "ts": 1714514716440000, "dur": 314671, "ph": "X", "name": "Build FinalProgram", "args": {} },
-{ "pid": 18252, "tid": 1, "ts": 1714514716441728, "dur": 18592, "ph": "X", "name": "Writing build program input data", "args": {} },
-{ "pid": 18252, "tid": 1, "ts": 1714514716460353, "dur": 294240, "ph": "X", "name": "Running build system backend", "args": {} },
-{ "pid": 18252, "tid": 1, "ts": 1714514716754620, "dur": 51, "ph": "X", "name": "Finishing", "args": {} },
-{ "pid": 18252, "tid": 1, "ts": 1714514716762332, "dur": 1480, "ph": "X", "name": "Main thread", "args": {} },
 { "cat":"", "pid":12345, "tid":0, "ts":0, "ph":"M", "name":"process_name", "args": { "name":"bee_backend" } }
 ,{ "pid":12345, "tid":0, "ts":1714514716535389, "dur":24280, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
 ,{ "pid":12345, "tid":0, "ts":1714514716560021, "dur":1010, "ph":"X", "name": "RemoveStaleOutputs",  "args": { "detail":"" }}
@@ -1878,6 +1870,4 @@
 ,{ "pid":12345, "tid":16, "ts":1714514716649030, "dur":74141, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/yeung/Desktop/NaviARKot-master/UnityProject/androidBuild/unityLibrary/src/main/jniLibs/arm64-v8a/libil2cpp.dbg.so" }}
 ,{ "pid":12345, "tid":16, "ts":1714514716723179, "dur":81, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
 ,{ "pid":12345, "tid":0, "ts":1714514716740702, "dur":4442, "ph":"X", "name": "ProfilerWriteOutput" }
-,{ "pid": 18252, "tid": 1, "ts": 1714514716764105, "dur": 1001, "ph": "X", "name": "Wait for external events", "args": {"First to finish": "backend_profiler0.traceevents"} },
-{ "pid": 18252, "tid": 1, "ts": 1714514716765178, "dur": 1141, "ph": "X", "name": "backend_profiler0.traceevents", "args": {} },
-{ "pid": 18252, "tid": 1, "ts": 1714514716761745, "dur": 5542, "ph": "X", "name": "Write chrome-trace events", "args": {} },
+,

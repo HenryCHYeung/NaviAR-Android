@@ -43,7 +43,9 @@ class FriendsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        loadData()
+        if (userid != 0) {
+            loadData()
+        }
     }
 
     override fun onCreateView(
