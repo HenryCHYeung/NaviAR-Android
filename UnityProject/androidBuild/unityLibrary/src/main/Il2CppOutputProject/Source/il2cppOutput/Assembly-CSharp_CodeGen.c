@@ -57,6 +57,7 @@ extern void U3CGpsStartU3Ed__5_System_Collections_Generic_IEnumeratorU3CSystem_O
 extern void U3CGpsStartU3Ed__5_System_Collections_IEnumerator_Reset_mDBA6A555FC94C10855489ECBCC653EBBBDDB077A (void);
 extern void U3CGpsStartU3Ed__5_System_Collections_IEnumerator_get_Current_m953AB14B1252C513A3B5BCFBA1FCAF0EF2DF56F1 (void);
 extern void SetNavigation_Start_m67BFF9B917481B617C4BBC913599A34ABA75B99E (void);
+extern void SetNavigation_OnSceneLoaded_m9DFB183474ECA0D313A06B1BB3EA40989B44C599 (void);
 extern void SetNavigation_setDestination_m7CBF9BBE0B93ACBB4236860BC5C823A26CBF9276 (void);
 extern void SetNavigation_Update_m1D78814834B651086C5C4068248C620B8724F513 (void);
 extern void SetNavigation__ctor_m802B914BEA9B7C7D567F57F02B3F3AB7DEFD1FE8 (void);
@@ -104,7 +105,7 @@ extern void GPSEncoder_ConvertGPStoUCS_m2F3642DB827538F0F8B15E38DE46AEACB9C74F0C
 extern void GPSEncoder_ConvertUCStoGPS_m1B95A0EFA1AECDB61E599F96793981E61CA147D1 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1 (void);
-static Il2CppMethodPointer s_methodPointers[92] = 
+static Il2CppMethodPointer s_methodPointers[93] = 
 {
 	CampusDirectory_Start_mA1934839E481749D86C5160BD657E8C44BED4A0C,
 	CampusDirectory_setTwentySixActive_mDF106DE29403937DAF7BFEEC1837559C1B2E1293,
@@ -151,6 +152,7 @@ static Il2CppMethodPointer s_methodPointers[92] =
 	U3CGpsStartU3Ed__5_System_Collections_IEnumerator_Reset_mDBA6A555FC94C10855489ECBCC653EBBBDDB077A,
 	U3CGpsStartU3Ed__5_System_Collections_IEnumerator_get_Current_m953AB14B1252C513A3B5BCFBA1FCAF0EF2DF56F1,
 	SetNavigation_Start_m67BFF9B917481B617C4BBC913599A34ABA75B99E,
+	SetNavigation_OnSceneLoaded_m9DFB183474ECA0D313A06B1BB3EA40989B44C599,
 	SetNavigation_setDestination_m7CBF9BBE0B93ACBB4236860BC5C823A26CBF9276,
 	SetNavigation_Update_m1D78814834B651086C5C4068248C620B8724F513,
 	SetNavigation__ctor_m802B914BEA9B7C7D567F57F02B3F3AB7DEFD1FE8,
@@ -199,7 +201,7 @@ static Il2CppMethodPointer s_methodPointers[92] =
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1,
 };
-static const int32_t s_InvokerIndices[92] = 
+static const int32_t s_InvokerIndices[93] = 
 {
 	6683,
 	6683,
@@ -246,6 +248,7 @@ static const int32_t s_InvokerIndices[92] =
 	6683,
 	6571,
 	6683,
+	2815,
 	5254,
 	6683,
 	6683,
@@ -298,7 +301,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	92,
+	93,
 	s_methodPointers,
 	0,
 	NULL,

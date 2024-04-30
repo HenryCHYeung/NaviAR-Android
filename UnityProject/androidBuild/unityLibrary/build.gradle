@@ -3,10 +3,10 @@ apply plugin: 'com.android.library'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation(name: 'WebViewPlugin', ext:'aar')
     implementation(name: 'arcore_client', ext:'aar')
     implementation(name: 'ARPresto', ext:'aar')
     implementation(name: 'UnityARCore', ext:'aar')
-    implementation(name: 'WebViewPlugin', ext:'aar')
     implementation(name: 'unityandroidpermissions', ext:'aar')
     implementation project('xrmanifest.androidlib')
 
