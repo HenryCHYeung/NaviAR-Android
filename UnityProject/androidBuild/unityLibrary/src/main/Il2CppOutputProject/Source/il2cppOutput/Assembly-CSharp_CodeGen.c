@@ -107,7 +107,11 @@ extern void GPSEncoder_ConvertGPStoUCS_m2F3642DB827538F0F8B15E38DE46AEACB9C74F0C
 extern void GPSEncoder_ConvertUCStoGPS_m1B95A0EFA1AECDB61E599F96793981E61CA147D1 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1 (void);
+<<<<<<< HEAD
 static Il2CppMethodPointer s_methodPointers[95] = 
+=======
+static Il2CppMethodPointer s_methodPointers[93] = 
+>>>>>>> 4c6e8d36bd8a67c19a74d9617841ac9e0807abd1
 {
 	CampusDirectory_Start_mA1934839E481749D86C5160BD657E8C44BED4A0C,
 	CampusDirectory_setTwentySixActive_mDF106DE29403937DAF7BFEEC1837559C1B2E1293,
@@ -205,6 +209,7 @@ static Il2CppMethodPointer s_methodPointers[95] =
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1,
 };
+<<<<<<< HEAD
 static const int32_t s_InvokerIndices[95] = 
 {
 	6757,
@@ -292,6 +297,101 @@ static const int32_t s_InvokerIndices[95] =
 	10123,
 	10128,
 	9309,
+=======
+static const int32_t s_InvokerIndices[93] = 
+{
+	6683,
+	6683,
+	6683,
+	6683,
+	6683,
+	6683,
+	6683,
+	5147,
+	6683,
+	6683,
+	6683,
+	2129,
+	2135,
+	4775,
+	6683,
+	6683,
+	5254,
+	5254,
+	6571,
+	5254,
+	6571,
+	6571,
+	6683,
+	6683,
+	5254,
+	6683,
+	6683,
+	6683,
+	6683,
+	6683,
+	6683,
+	6683,
+	6683,
+	6683,
+	6683,
+	6683,
+	6571,
+	6683,
+	5218,
+	6683,
+	6463,
+	6571,
+	6683,
+	6571,
+	6683,
+	2815,
+	5254,
+	6683,
+	6683,
+	5254,
+	2769,
+	6683,
+	6683,
+	6683,
+	6683,
+	2815,
+	6683,
+	6683,
+	6683,
+	6683,
+	6683,
+	6683,
+	6571,
+	6683,
+	6683,
+	5254,
+	5254,
+	5254,
+	5254,
+	10145,
+	6683,
+	5254,
+	5254,
+	5254,
+	5218,
+	6683,
+	6463,
+	6571,
+	6683,
+	6571,
+	9902,
+	9907,
+	9103,
+	9944,
+	6683,
+	10099,
+	6614,
+	6614,
+	5289,
+	4778,
+	4770,
+>>>>>>> 4c6e8d36bd8a67c19a74d9617841ac9e0807abd1
 	10165,
 	6757,
 	10327,
@@ -307,7 +407,11 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
+<<<<<<< HEAD
 	95,
+=======
+	93,
+>>>>>>> 4c6e8d36bd8a67c19a74d9617841ac9e0807abd1
 	s_methodPointers,
 	0,
 	NULL,
