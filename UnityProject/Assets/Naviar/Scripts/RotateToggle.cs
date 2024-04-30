@@ -2,19 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 [RequireComponent(typeof(RotateModel))]
 public class RotateToggle : MonoBehaviour
 {
-    private GameObject destination,Indicator,mainCamera;
+    private GameObject destination,indicator,mainCamera;
+    SetNavigation nav;
     private RotateModel rotateScript;
     private bool isToggledOn = false;
     // Start is called before the first frame update
     void Start()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
         mainCamera=GameObject.Find("TopDownCamera");
         destination=GameObject.Find("Destination");
-        Indicator=GameObject.Find("indicator");
+        indicator=GameObject.Find("indicator");
+        nav=indicator.GetComponent<SetNavigation>();
         rotateScript=GameObject.Find("TransformToggle").GetComponent<RotateModel>();
+        rotateScript.enabled=false;
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        mainCamera=GameObject.Find("TopDownCamera");
+        destination=GameObject.Find("Destination");
+        indicator=GameObject.Find("indicator");
+        nav=indicator.GetComponent<SetNavigation>();
+        rotateScript=GameObject.Find("TransformToggle").GetComponent<RotateModel>();
+        isToggledOn = false;
         rotateScript.enabled=false;
     }
     public void Toggle()
@@ -31,7 +45,8 @@ public class RotateToggle : MonoBehaviour
         rotateScript.enabled=true;
         mainCamera.GetComponent<DestinationPoint>().setRotationBool(true);
         destination.SetActive(false);
-        Indicator.SetActive(false);
+        nav.setLineToggle(false);
+        indicator.SetActive(false);
     }
     private void toggleOff(){
         Messenger msg=GameObject.Find("Messenger").GetComponent<Messenger>();
@@ -40,8 +55,6 @@ public class RotateToggle : MonoBehaviour
 
         if(currentScene.name==("Naviar/Scenes/Edward Guiliano Global Center 1855 Broadway/Edward Guiliano Global Center 1855 Broadway"+floor)){
             rotateScript.modelTransform.rotation = Quaternion.Euler(0f, -180f, 0f);
-        }else if(currentScene.name==("Naviar/Scenes/26W. 61st Street/26W. 61st Street"+floor)){
-            rotateScript.modelTransform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }else{
             rotateScript.modelTransform.rotation = Quaternion.Euler(0f, -90f, 0f);
         }
@@ -49,6 +62,7 @@ public class RotateToggle : MonoBehaviour
         rotateScript.enabled=false;
         mainCamera.GetComponent<DestinationPoint>().setRotationBool(false);
         destination.SetActive(true);
-        Indicator.SetActive(true);
+        indicator.SetActive(true);
+        nav.setLineToggle(true);
     }
 }

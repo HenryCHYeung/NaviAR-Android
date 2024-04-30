@@ -52,7 +52,9 @@ public class SetNavigation : MonoBehaviour
       dest=true;
       destination=d;
     }
-  
+    public void setLineToggle(bool n){
+      lineToggle=n;
+    }
     // Update is called once per frame
     void Update(){
       if(msg.roomNum !="" && finish && (currentScene.name!="Naviar/Scenes/Buildings")){

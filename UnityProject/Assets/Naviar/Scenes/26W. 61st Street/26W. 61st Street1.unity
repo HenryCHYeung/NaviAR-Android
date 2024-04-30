@@ -1282,13 +1282,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 595549200}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -14.87, y: 3.354, z: 16.26}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -9.539998, y: 3.354, z: 22.270004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 412079582}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1651153470}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &717743499
 GameObject:
@@ -2773,6 +2773,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2113510421}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 395b9f8e50d31654195b49c2d58c7ba1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 595549204}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 395b9f8e50d31654195b49c2d58c7ba1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2101142125}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 395b9f8e50d31654195b49c2d58c7ba1, type: 3}
 --- !u!4 &1651153470 stripped
@@ -3272,12 +3280,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101142123}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.7208056, y: 5.7408085, z: 2.978723}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -22.821278, y: 5.7408085, z: 10.120809}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1651153470}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2113510420
 GameObject:
@@ -3352,7 +3360,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113510420}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
@@ -3427,11 +3435,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1651153469}
-  - {fileID: 2101142125}
   - {fileID: 422261029}
   - {fileID: 1581718063}
   - {fileID: 1080916712}
   - {fileID: 37376801}
-  - {fileID: 595549204}
   - {fileID: 1261511814}
   - {fileID: 304043827}

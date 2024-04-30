@@ -689,7 +689,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254474466}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -2028,7 +2028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &756173654
 Transform:
   m_ObjectHideFlags: 0
@@ -3059,13 +3059,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102842321}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -2.96, y: 0, z: 15.92}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -9.879999, y: 0, z: 10.3600025}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1720755449}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2027592138}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1155802824
 GameObject:
@@ -3690,12 +3690,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383297768}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.7208056, y: 5.7408085, z: 2.978723}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -22.821278, y: 5.7408085, z: 10.120809}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2027592138}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1414152314
 GameObject:
@@ -5126,6 +5126,14 @@ PrefabInstance:
         type: 3}
       insertIndex: 0
       addedObject: {fileID: 254474467}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2c536375253adb5498ea188b9fd78c12,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1102842325}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2c536375253adb5498ea188b9fd78c12,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1383297770}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c536375253adb5498ea188b9fd78c12, type: 3}
 --- !u!4 &2027592138 stripped
@@ -5301,11 +5309,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 2027592137}
-  - {fileID: 1383297770}
   - {fileID: 770404900}
   - {fileID: 2114373730}
   - {fileID: 204996855}
   - {fileID: 800947956}
-  - {fileID: 1102842325}
   - {fileID: 2127281601}
   - {fileID: 756173654}

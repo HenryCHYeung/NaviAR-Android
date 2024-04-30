@@ -1088,7 +1088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &527113912
 Transform:
   m_ObjectHideFlags: 0
@@ -1704,13 +1704,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809772606}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -3, y: 0, z: 13.87}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -11.929999, y: 0, z: 10.400002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1457365025}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 934613288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &900263409
 GameObject:
@@ -1920,6 +1920,14 @@ PrefabInstance:
         type: 3}
       insertIndex: 0
       addedObject: {fileID: 1853408979}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4c36d5439e498754ea9162444a9bf976,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 809772610}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4c36d5439e498754ea9162444a9bf976,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1757288663}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c36d5439e498754ea9162444a9bf976, type: 3}
 --- !u!4 &934613288 stripped
@@ -3938,12 +3946,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757288661}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.7208076, y: 5.7408085, z: 2.9787178}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -22.821281, y: 5.7408085, z: 10.1208105}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 934613288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1775250698
 GameObject:
@@ -4040,7 +4048,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853408978}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -4633,11 +4641,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 934613287}
-  - {fileID: 1757288663}
   - {fileID: 283318423}
   - {fileID: 1079879995}
   - {fileID: 1362690296}
   - {fileID: 1312649890}
-  - {fileID: 809772610}
   - {fileID: 1998389455}
   - {fileID: 527113912}
