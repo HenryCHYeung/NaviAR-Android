@@ -13,7 +13,6 @@ public class RotateToggle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
         mainCamera=GameObject.Find("TopDownCamera");
         destination=GameObject.Find("Destination");
         indicator=GameObject.Find("indicator");
@@ -21,16 +20,12 @@ public class RotateToggle : MonoBehaviour
         rotateScript=GameObject.Find("TransformToggle").GetComponent<RotateModel>();
         rotateScript.enabled=false;
     }
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
+    void Update(){
         mainCamera=GameObject.Find("TopDownCamera");
         destination=GameObject.Find("Destination");
         indicator=GameObject.Find("indicator");
-        Debug.Log(indicator.name);
         nav=indicator.GetComponent<SetNavigation>();
         rotateScript=GameObject.Find("TransformToggle").GetComponent<RotateModel>();
-        isToggledOn = false;
-        rotateScript.enabled=false;
     }
     public void Toggle()
     {

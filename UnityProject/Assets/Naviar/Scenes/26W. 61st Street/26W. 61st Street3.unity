@@ -1704,13 +1704,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809772606}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -11.929999, y: 0, z: 10.400002}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -3, y: 0, z: 13.869998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1457365025}
-  m_Father: {fileID: 934613288}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &900263409
 GameObject:
@@ -1920,14 +1920,6 @@ PrefabInstance:
         type: 3}
       insertIndex: 0
       addedObject: {fileID: 1853408979}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4c36d5439e498754ea9162444a9bf976,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 809772610}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4c36d5439e498754ea9162444a9bf976,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1757288663}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c36d5439e498754ea9162444a9bf976, type: 3}
 --- !u!4 &934613288 stripped
@@ -3946,12 +3938,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757288661}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -22.821281, y: 5.7408085, z: 10.1208105}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.7208095, y: 5.7408085, z: 2.978714}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 934613288}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1775250698
 GameObject:
@@ -4642,6 +4634,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 934613287}
   - {fileID: 283318423}
+  - {fileID: 809772610}
+  - {fileID: 1757288663}
   - {fileID: 1079879995}
   - {fileID: 1362690296}
   - {fileID: 1312649890}
