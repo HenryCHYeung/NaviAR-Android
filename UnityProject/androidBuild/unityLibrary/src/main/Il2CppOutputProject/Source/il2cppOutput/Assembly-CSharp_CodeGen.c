@@ -36,7 +36,6 @@ extern void RotateModel_Start_m64B5853E6657A5F3F77F8FEFB4E9FC810CDE5409 (void);
 extern void RotateModel_Update_m639B2F51B9A2AE254D740B9D47F6B6A7205D28D0 (void);
 extern void RotateModel__ctor_mDD482D8B59786150E1ECF079A88C368503DDF630 (void);
 extern void RotateToggle_Start_m75A91493B6EF7F2943DA10CA18D490E145568EC5 (void);
-extern void RotateToggle_Update_m5720543B5847D3036D2A2EA7C134FA7668EF0819 (void);
 extern void RotateToggle_Toggle_mDB22D2AA8E44155724F2CA1F0CE8C8F1D568CFE8 (void);
 extern void RotateToggle_toggleOn_mE960E0361A8827552C8C05FADACA76D706762C55 (void);
 extern void RotateToggle_toggleOff_m7E60FCC5131920E3142AAC2C92DDE06ECBA48AAF (void);
@@ -101,7 +100,7 @@ extern void GPSEncoder_ConvertGPStoUCS_m2F3642DB827538F0F8B15E38DE46AEACB9C74F0C
 extern void GPSEncoder_ConvertUCStoGPS_m1B95A0EFA1AECDB61E599F96793981E61CA147D1 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1 (void);
-static Il2CppMethodPointer s_methodPointers[89] = 
+static Il2CppMethodPointer s_methodPointers[88] = 
 {
 	DestinationPoint_Start_m56EF142DFCB165E1E54833AEA59F9F4D0C3CB644,
 	DestinationPoint_setRotationBool_m559E16B0CC532B714DDF3764266C156F12625A61,
@@ -127,7 +126,6 @@ static Il2CppMethodPointer s_methodPointers[89] =
 	RotateModel_Update_m639B2F51B9A2AE254D740B9D47F6B6A7205D28D0,
 	RotateModel__ctor_mDD482D8B59786150E1ECF079A88C368503DDF630,
 	RotateToggle_Start_m75A91493B6EF7F2943DA10CA18D490E145568EC5,
-	RotateToggle_Update_m5720543B5847D3036D2A2EA7C134FA7668EF0819,
 	RotateToggle_Toggle_mDB22D2AA8E44155724F2CA1F0CE8C8F1D568CFE8,
 	RotateToggle_toggleOn_mE960E0361A8827552C8C05FADACA76D706762C55,
 	RotateToggle_toggleOff_m7E60FCC5131920E3142AAC2C92DDE06ECBA48AAF,
@@ -193,7 +191,7 @@ static Il2CppMethodPointer s_methodPointers[89] =
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1,
 };
-static const int32_t s_InvokerIndices[89] = 
+static const int32_t s_InvokerIndices[88] = 
 {
 	6757,
 	5192,
@@ -214,7 +212,6 @@ static const int32_t s_InvokerIndices[89] =
 	6757,
 	6757,
 	5299,
-	6757,
 	6757,
 	6757,
 	6757,
@@ -289,7 +286,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	89,
+	88,
 	s_methodPointers,
 	0,
 	NULL,

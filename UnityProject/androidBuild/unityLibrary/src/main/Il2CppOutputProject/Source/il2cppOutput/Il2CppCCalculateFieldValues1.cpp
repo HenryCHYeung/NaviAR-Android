@@ -15168,10 +15168,6 @@ struct EventTrigger_tAEBFB7A16CA99343EA87722F78884BF8646BAE1B  : public MonoBeha
 {
 	List_1_tA70D786D375D198C77EBB594AE632A6DFC82A440* ___m_Delegates;
 };
-struct GpsToUnity_t56F8DD054A64AF395A2685988E2A36335DE1D265  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
-{
-	String_t* ___test;
-};
 struct HandheldARInputDevice_tDC70607D65788F0D6A7BA2EABA6D289D15DFDCE9  : public InputDevice_t8BCF67533E872A75779C24C93D1D7085B72D364B
 {
 	Vector3Control_t32D7E4836F56C2FDC61BF0D96ED455DEFA6C949A* ___U3CdevicePositionU3Ek__BackingField;
@@ -15265,6 +15261,8 @@ struct RotateToggle_t023B4BE36B7BA5EB10A40C9E7CFC33B54DAB95BB  : public MonoBeha
 	SetNavigation_t3B30AAEB2ECE7AAD37EE8197ACB96E7772680782* ___nav;
 	RotateModel_t6A23F14A4E22BD472F3EDC874C501C0A2F5DB141* ___rotateScript;
 	bool ___isToggledOn;
+	Scene_tA1DC762B79745EB5140F054C884855B922318356 ___currentScene;
+	String_t* ___floor;
 };
 struct SampleCustomHeader_t6BE78D931EAB1CD4D23CB7D0A1436AC042DA245F  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
@@ -22696,9 +22694,6 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5083[2] =
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5085[4] = 
 {
 	static_cast<int32_t>(offsetof(DestinationPoint_t660EE9B30C30439E52581CCF02436774A45D694C, ___destination)),static_cast<int32_t>(offsetof(DestinationPoint_t660EE9B30C30439E52581CCF02436774A45D694C, ___mainCamera)),static_cast<int32_t>(offsetof(DestinationPoint_t660EE9B30C30439E52581CCF02436774A45D694C, ___rotationOn)),static_cast<int32_t>(offsetof(DestinationPoint_t660EE9B30C30439E52581CCF02436774A45D694C, ___navScript)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5086[1] = 
-{
-	static_cast<int32_t>(offsetof(GpsToUnity_t56F8DD054A64AF395A2685988E2A36335DE1D265, ___test)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5087[6] = 
 {
 	static_cast<int32_t>(offsetof(Messenger_t6BEA126B4DCA3F20E4EDAE07484F09893CE6D2C5, ___data)),static_cast<int32_t>(offsetof(Messenger_t6BEA126B4DCA3F20E4EDAE07484F09893CE6D2C5, ___roomNum)),static_cast<int32_t>(offsetof(Messenger_t6BEA126B4DCA3F20E4EDAE07484F09893CE6D2C5, ___building)),static_cast<int32_t>(offsetof(Messenger_t6BEA126B4DCA3F20E4EDAE07484F09893CE6D2C5, ___floor)),static_cast<int32_t>(offsetof(Messenger_t6BEA126B4DCA3F20E4EDAE07484F09893CE6D2C5, ___message)),static_cast<int32_t>(offsetof(Messenger_t6BEA126B4DCA3F20E4EDAE07484F09893CE6D2C5, ___switchSceneScript)),};
@@ -22708,9 +22703,9 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5088[1] =
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5089[6] = 
 {
 	static_cast<int32_t>(offsetof(RotateModel_t6A23F14A4E22BD472F3EDC874C501C0A2F5DB141, ___modelTransform)),static_cast<int32_t>(offsetof(RotateModel_t6A23F14A4E22BD472F3EDC874C501C0A2F5DB141, ___touchStartPos)),static_cast<int32_t>(offsetof(RotateModel_t6A23F14A4E22BD472F3EDC874C501C0A2F5DB141, ___touchEndPos)),static_cast<int32_t>(offsetof(RotateModel_t6A23F14A4E22BD472F3EDC874C501C0A2F5DB141, ___initialRotation)),static_cast<int32_t>(offsetof(RotateModel_t6A23F14A4E22BD472F3EDC874C501C0A2F5DB141, ___initialScale)),static_cast<int32_t>(offsetof(RotateModel_t6A23F14A4E22BD472F3EDC874C501C0A2F5DB141, ___isPinching)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5090[6] = 
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5090[8] = 
 {
-	static_cast<int32_t>(offsetof(RotateToggle_t023B4BE36B7BA5EB10A40C9E7CFC33B54DAB95BB, ___destination)),static_cast<int32_t>(offsetof(RotateToggle_t023B4BE36B7BA5EB10A40C9E7CFC33B54DAB95BB, ___indicator)),static_cast<int32_t>(offsetof(RotateToggle_t023B4BE36B7BA5EB10A40C9E7CFC33B54DAB95BB, ___mainCamera)),static_cast<int32_t>(offsetof(RotateToggle_t023B4BE36B7BA5EB10A40C9E7CFC33B54DAB95BB, ___nav)),static_cast<int32_t>(offsetof(RotateToggle_t023B4BE36B7BA5EB10A40C9E7CFC33B54DAB95BB, ___rotateScript)),static_cast<int32_t>(offsetof(RotateToggle_t023B4BE36B7BA5EB10A40C9E7CFC33B54DAB95BB, ___isToggledOn)),};
+	static_cast<int32_t>(offsetof(RotateToggle_t023B4BE36B7BA5EB10A40C9E7CFC33B54DAB95BB, ___destination)),static_cast<int32_t>(offsetof(RotateToggle_t023B4BE36B7BA5EB10A40C9E7CFC33B54DAB95BB, ___indicator)),static_cast<int32_t>(offsetof(RotateToggle_t023B4BE36B7BA5EB10A40C9E7CFC33B54DAB95BB, ___mainCamera)),static_cast<int32_t>(offsetof(RotateToggle_t023B4BE36B7BA5EB10A40C9E7CFC33B54DAB95BB, ___nav)),static_cast<int32_t>(offsetof(RotateToggle_t023B4BE36B7BA5EB10A40C9E7CFC33B54DAB95BB, ___rotateScript)),static_cast<int32_t>(offsetof(RotateToggle_t023B4BE36B7BA5EB10A40C9E7CFC33B54DAB95BB, ___isToggledOn)),static_cast<int32_t>(offsetof(RotateToggle_t023B4BE36B7BA5EB10A40C9E7CFC33B54DAB95BB, ___currentScene)),static_cast<int32_t>(offsetof(RotateToggle_t023B4BE36B7BA5EB10A40C9E7CFC33B54DAB95BB, ___floor)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable5091[5] = 
 {
 	static_cast<int32_t>(offsetof(U3CGpsStartU3Ed__5_t55A80B7CB6A92D8734C883B480B614E1C8E1CA5A, ___U3CU3E1__state)),static_cast<int32_t>(offsetof(U3CGpsStartU3Ed__5_t55A80B7CB6A92D8734C883B480B614E1C8E1CA5A, ___U3CU3E2__current)),static_cast<int32_t>(offsetof(U3CGpsStartU3Ed__5_t55A80B7CB6A92D8734C883B480B614E1C8E1CA5A, ___U3CU3E4__this)),static_cast<int32_t>(offsetof(U3CGpsStartU3Ed__5_t55A80B7CB6A92D8734C883B480B614E1C8E1CA5A, ___U3CaccelerationU3E5__1)),static_cast<int32_t>(offsetof(U3CGpsStartU3Ed__5_t55A80B7CB6A92D8734C883B480B614E1C8E1CA5A, ___U3CmaxWaitU3E5__2)),};

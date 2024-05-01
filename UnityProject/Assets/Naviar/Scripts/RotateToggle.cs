@@ -4,61 +4,61 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 [RequireComponent(typeof(RotateModel))]
-public class RotateToggle : MonoBehaviour
-{
-    private GameObject destination,indicator,mainCamera;
-    SetNavigation nav;
+public class RotateToggle : MonoBehaviour{
+ private GameObject destination, indicator, mainCamera;
+    private SetNavigation nav;
     private RotateModel rotateScript;
     private bool isToggledOn = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        mainCamera=GameObject.Find("TopDownCamera");
-        destination=GameObject.Find("Destination");
-        indicator=GameObject.Find("indicator");
-        nav=indicator.GetComponent<SetNavigation>();
-        rotateScript=GameObject.Find("TransformToggle").GetComponent<RotateModel>();
-        rotateScript.enabled=false;
+    private Scene currentScene;
+    private string floor;
+
+    void Start(){
+        currentScene = SceneManager.GetActiveScene();
+        mainCamera = GameObject.Find("TopDownCamera");
+        destination = GameObject.Find("Destination");
+        indicator = GameObject.Find("indicator");
+        nav = indicator.GetComponent<SetNavigation>();
+        rotateScript = GameObject.Find("TransformToggle").GetComponent<RotateModel>();
+        rotateScript.enabled = false;
     }
-    void Update(){
-        mainCamera=GameObject.Find("TopDownCamera");
-        destination=GameObject.Find("Destination");
-        indicator=GameObject.Find("indicator");
-        nav=indicator.GetComponent<SetNavigation>();
-        rotateScript=GameObject.Find("TransformToggle").GetComponent<RotateModel>();
-    }
-    public void Toggle()
-    {
-        isToggledOn = !isToggledOn; 
+
+    public void Toggle(){
+        isToggledOn = !isToggledOn;
 
         if (isToggledOn){
             toggleOn();
-        }else{
+            mainCamera.GetComponent<DestinationPoint>().setRotationBool(true);
+            destination.SetActive(false);
+            nav.setLineToggle(false);
+            indicator.SetActive(false);
+        }
+        else{
+            Messenger msg = GameObject.Find("Messenger").GetComponent<Messenger>();
+            floor = msg.getFloor();
             toggleOff();
+            mainCamera.GetComponent<DestinationPoint>().setRotationBool(false);
+            destination.SetActive(true);
+            indicator.SetActive(true);
+            nav.setLineToggle(true);
         }
     }
-    private void toggleOn(){
-        rotateScript.enabled=true;
-        mainCamera.GetComponent<DestinationPoint>().setRotationBool(true);
-        destination.SetActive(false);
-        nav.setLineToggle(false);
-        indicator.SetActive(false);
-    }
-    private void toggleOff(){
-        Messenger msg=GameObject.Find("Messenger").GetComponent<Messenger>();
-        string floor=msg.getFloor();
-        Scene currentScene=SceneManager.GetActiveScene();
 
-        if(currentScene.name==("Naviar/Scenes/Edward Guiliano Global Center 1855 Broadway/Edward Guiliano Global Center 1855 Broadway"+floor)){
+    private void toggleOn()
+    {
+        rotateScript.enabled = true;
+    }
+
+    private void toggleOff()
+    {
+        if (currentScene.name==("Edward Guiliano Global Center 1855 Broadway"+floor)){
             rotateScript.modelTransform.rotation = Quaternion.Euler(0f, -180f, 0f);
-        }else{
+        }
+        else{
             rotateScript.modelTransform.rotation = Quaternion.Euler(0f, -90f, 0f);
         }
         rotateScript.modelTransform.transform.localScale=new Vector3(1f,1f,1f);
-        rotateScript.enabled=false;
-        mainCamera.GetComponent<DestinationPoint>().setRotationBool(false);
-        destination.SetActive(true);
-        indicator.SetActive(true);
-        nav.setLineToggle(true);
+        rotateScript.enabled = false;
     }
+    
+ 
 }

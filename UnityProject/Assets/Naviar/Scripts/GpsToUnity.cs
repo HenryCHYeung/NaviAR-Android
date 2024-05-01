@@ -5,8 +5,8 @@ using TMPro;
 
 public class GpsToUnity : MonoBehaviour
 {
-   public string test="40.769759926885385,-73.98177261792353";
-     // Origin coordinates in latitude and longitude
+    //public string test="40.769759926885385,-73.98177261792353";
+    // Origin coordinates in latitude and longitude
     void Start()
     {   
         setPoint(40.769879371046194, -73.98176866320198); // bank
