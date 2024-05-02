@@ -5,14 +5,8 @@ using TMPro;
 
 public class GpsToUnity : MonoBehaviour
 {
-    //public string test="40.769759926885385,-73.98177261792353";
+    //public string test="40.769759926885385,-73.98177261792353";//Bank
     // Origin coordinates in latitude and longitude
-    void Start()
-    {   
-        setPoint(40.769879371046194, -73.98176866320198); // bank
-        setPoint(40.76825427917708, -73.98190813805525); // pillar
-        setPoint(40.769052571282096, -73.98146625472768);//
-    }
 
     public Vector2 truncate(double latitude, double longitude)
     {
@@ -43,7 +37,7 @@ public class GpsToUnity : MonoBehaviour
         double deltaLongitudeInMeters = deltaLongitude * LongitudeToMeters * System.Math.Cos(originCoordinates.x * Mathf.Deg2Rad);
         Debug.Log(deltaLatitudeInMeters+","+deltaLongitudeInMeters);
         Debug.Log("New Position in Unity Space: " + transform.position);
-        return new Vector3((float)deltaLongitudeInMeters, -267.91f, (float)deltaLatitudeInMeters);
+        return new Vector3((float)deltaLongitudeInMeters, -225.79f, (float)deltaLatitudeInMeters);
         //createPoint(test);
    }
    public Vector3 setPointForStrings(string message)

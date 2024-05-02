@@ -97,8 +97,6 @@ public class SetNavigation : MonoBehaviour
       if((navTargetObjects.Count !=0) && finish && (currentScene.name=="Buildings")){
         navCurrObject=navTargetObjects[0];
         lineToggle=true;
-        TMP_Text g= GameObject.Find("gps").GetComponent<TMP_Text>();
-        g.SetText("");
         }
       }
     }   

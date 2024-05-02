@@ -16,7 +16,6 @@ extern void DestinationPoint_Start_m56EF142DFCB165E1E54833AEA59F9F4D0C3CB644 (vo
 extern void DestinationPoint_setRotationBool_m559E16B0CC532B714DDF3764266C156F12625A61 (void);
 extern void DestinationPoint_Update_mB70D93B1FCC99DEB46443A83BC9E5B87E755CBDB (void);
 extern void DestinationPoint__ctor_m474F2207D8841C6BAAC743EB64E918151DCB0DD1 (void);
-extern void GpsToUnity_Start_mF6EA05B620C4F2FCA68B75FB9CD98D19E34CE2CC (void);
 extern void GpsToUnity_truncate_m83165E95BB0F31C7D3DF41808925B84D1E6FD24F (void);
 extern void GpsToUnity_setPoint_mE2A0BD1B506A09F7EB42FEF1878E64B99DA8364C (void);
 extern void GpsToUnity_setPointForStrings_mF6FFE6AE796BEA97550D4A522E1DA7E7C480F97E (void);
@@ -100,13 +99,12 @@ extern void GPSEncoder_ConvertGPStoUCS_m2F3642DB827538F0F8B15E38DE46AEACB9C74F0C
 extern void GPSEncoder_ConvertUCStoGPS_m1B95A0EFA1AECDB61E599F96793981E61CA147D1 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1 (void);
-static Il2CppMethodPointer s_methodPointers[88] = 
+static Il2CppMethodPointer s_methodPointers[87] = 
 {
 	DestinationPoint_Start_m56EF142DFCB165E1E54833AEA59F9F4D0C3CB644,
 	DestinationPoint_setRotationBool_m559E16B0CC532B714DDF3764266C156F12625A61,
 	DestinationPoint_Update_mB70D93B1FCC99DEB46443A83BC9E5B87E755CBDB,
 	DestinationPoint__ctor_m474F2207D8841C6BAAC743EB64E918151DCB0DD1,
-	GpsToUnity_Start_mF6EA05B620C4F2FCA68B75FB9CD98D19E34CE2CC,
 	GpsToUnity_truncate_m83165E95BB0F31C7D3DF41808925B84D1E6FD24F,
 	GpsToUnity_setPoint_mE2A0BD1B506A09F7EB42FEF1878E64B99DA8364C,
 	GpsToUnity_setPointForStrings_mF6FFE6AE796BEA97550D4A522E1DA7E7C480F97E,
@@ -191,11 +189,10 @@ static Il2CppMethodPointer s_methodPointers[88] =
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1,
 };
-static const int32_t s_InvokerIndices[88] = 
+static const int32_t s_InvokerIndices[87] = 
 {
 	6757,
 	5192,
-	6757,
 	6757,
 	6757,
 	2136,
@@ -286,7 +283,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	88,
+	87,
 	s_methodPointers,
 	0,
 	NULL,

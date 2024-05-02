@@ -11,8 +11,10 @@ public class SensorScript : MonoBehaviour
     public bool isUpdating;
     private Vector3 userLocation;
     private GpsToUnity convertor;
+    private NavMeshSnapper snapper;
     void Start(){
         convertor= gameObject.GetComponent<GpsToUnity>();
+        snapper= GameObject.Find("cadmapper-manhattan-new-york-us").GetComponent<NavMeshSnapper>();
     }
     void Update(){
         if(!isUpdating){
@@ -62,6 +64,7 @@ public class SensorScript : MonoBehaviour
         {
             userLocation=convertor.setPoint(Input.location.lastData.latitude,Input.location.lastData.longitude);
             transform.position= userLocation;
+            snapper.SnapNavToNavMesh(gameObject);
             // If the connection succeeded, this retrieves the device's current location and displays it in the Console window.
             //Debug.Log("Location:"+"\nLatitude:" + Input.location.lastData.latitude + "\nLongitude:" + Input.location.lastData.longitude + "\nAltitude:" + Input.location.lastData.altitude + "\nAccuracy:" + Input.location.lastData.horizontalAccuracy + "\nTime refreshed:" + Input.location.lastData.timestamp);
             //gpsText.SetText("Location:"+"\nLatitude:" + Input.location.lastData.latitude + "\nLongitude:" + Input.location.lastData.longitude + "\nAltitude:" + Input.location.lastData.altitude + "\nAccuracy:" + Input.location.lastData.horizontalAccuracy + "\nTime refreshed:" + Input.location.lastData.timestamp);

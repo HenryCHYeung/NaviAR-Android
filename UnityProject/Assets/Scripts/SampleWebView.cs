@@ -44,21 +44,30 @@ public class SampleWebView : MonoBehaviour
             {
                 GpsToUnity gps=GameObject.Find("player").GetComponent<GpsToUnity>();
                 GameObject placeObj=GameObject.Find("Place");
+                NavMeshSnapper snapper= GameObject.Find("cadmapper-manhattan-new-york-us").GetComponent<NavMeshSnapper>();
                 Vector3 placeVector=gps.setPointForStrings(msg);
                 if(placeObj!=null){//place exists
                     placeObj.transform.localPosition = placeVector;
+                    snapper.SnapNavToNavMesh(placeObj);
                 }else{
                     GameObject pointOfInterest = GameObject.Find("PointsOfInterest");
                     GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     cube.name = "Place";
                     cube.AddComponent<NavMeshAgent>();
+                    cube.AddComponent<BoxCollider>();
+                    Collider collider=cube.GetComponent<BoxCollider>();
+                    collider.isTrigger=true;
+                    collider.transform.localScale = new Vector3(20f,20f,20f);
+                    cube.AddComponent<PlaceCollision>();
                     cube.transform.localPosition = placeVector;
                     cube.transform.parent = pointOfInterest.transform;
+                    snapper.SnapNavToNavMesh(cube);
                 }
                 
-                
+                TMP_Text g= GameObject.Find("gps").GetComponent<TMP_Text>();
+                g.text="";
                 Debug.Log(string.Format("CallFromJS[{0}]", msg));
-                status.text = msg;
+                status.text = (gps.setPoint(40.76824754802539, -73.98398336790302).ToString());
                 status.GetComponent<Animation>().Play();
             },
             err: (msg) =>
