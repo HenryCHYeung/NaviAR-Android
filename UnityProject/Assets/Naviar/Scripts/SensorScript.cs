@@ -7,14 +7,12 @@ using TMPro;
 
 public class SensorScript : MonoBehaviour
 {
-    //public TMP_Text gpsText;
+    public TMP_Text gpsText;//comment later
     public bool isUpdating;
     private Vector3 userLocation;
     private GpsToUnity convertor;
-    private NavMeshSnapper snapper;
     void Start(){
         convertor= gameObject.GetComponent<GpsToUnity>();
-        snapper= GameObject.Find("cadmapper-manhattan-new-york-us").GetComponent<NavMeshSnapper>();
     }
     void Update(){
         if(!isUpdating){
@@ -63,11 +61,13 @@ public class SensorScript : MonoBehaviour
         else
         {
             userLocation=convertor.setPoint(Input.location.lastData.latitude,Input.location.lastData.longitude);
-            transform.position= userLocation;
-            snapper.SnapNavToNavMesh(gameObject);
+            GameObject player= GameObject.Find("player");
+            player.transform.position= userLocation;
+            NavMeshSnapper.SnapNavToNavMesh(gameObject);
+            
             // If the connection succeeded, this retrieves the device's current location and displays it in the Console window.
             //Debug.Log("Location:"+"\nLatitude:" + Input.location.lastData.latitude + "\nLongitude:" + Input.location.lastData.longitude + "\nAltitude:" + Input.location.lastData.altitude + "\nAccuracy:" + Input.location.lastData.horizontalAccuracy + "\nTime refreshed:" + Input.location.lastData.timestamp);
-            //gpsText.SetText("Location:"+"\nLatitude:" + Input.location.lastData.latitude + "\nLongitude:" + Input.location.lastData.longitude + "\nAltitude:" + Input.location.lastData.altitude + "\nAccuracy:" + Input.location.lastData.horizontalAccuracy + "\nTime refreshed:" + Input.location.lastData.timestamp);
+            //gpsText.SetText("Location:"+"\nLatitude:" + Input.location.lastData.latitude + "\nLongitude:" + Input.location.lastData.longitude + "\nAltitude:" + Input.location.lastData.altitude + "\nAccuracy:" + Input.location.lastData.horizontalAccuracy + "\nTime refreshed:" + Input.location.lastData.timestamp+"Vector:"+userLocation+","+player.transform.position);
         }
 
         // Stops the location service if there is no need to query location updates continuously.

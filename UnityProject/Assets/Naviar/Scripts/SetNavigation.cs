@@ -85,7 +85,6 @@ public class SetNavigation : MonoBehaviour
       if ((currentScene.name=="Buildings") && (pathFields != null)) {
         GameObject currentChild = pathFields.transform.GetChild(0).gameObject;
         if(currentChild!=null){
-          snapper.SnapNavToNavMesh(currentChild);
           foreach (GameObject obj in navTargetObjects){
             if(!obj.name.Equals(currentChild.name)){
               navTargetObjects.Add(currentChild);

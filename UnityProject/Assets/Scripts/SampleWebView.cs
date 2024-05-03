@@ -44,11 +44,12 @@ public class SampleWebView : MonoBehaviour
             {
                 GpsToUnity gps=GameObject.Find("player").GetComponent<GpsToUnity>();
                 GameObject placeObj=GameObject.Find("Place");
-                NavMeshSnapper snapper= GameObject.Find("cadmapper-manhattan-new-york-us").GetComponent<NavMeshSnapper>();
+                TMP_Text g= GameObject.Find("gps").GetComponent<TMP_Text>();
                 Vector3 placeVector=gps.setPointForStrings(msg);
                 if(placeObj!=null){//place exists
-                    placeObj.transform.localPosition = placeVector;
-                    snapper.SnapNavToNavMesh(placeObj);
+                    placeObj.transform.position = placeVector;
+                    NavMeshSnapper.SnapNavToNavMesh(placeObj);
+                    status.text = placeObj.transform.position.ToString();
                 }else{
                     GameObject pointOfInterest = GameObject.Find("PointsOfInterest");
                     GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -59,15 +60,15 @@ public class SampleWebView : MonoBehaviour
                     collider.isTrigger=true;
                     collider.transform.localScale = new Vector3(20f,20f,20f);
                     cube.AddComponent<PlaceCollision>();
-                    cube.transform.localPosition = placeVector;
+                    cube.transform.position = placeVector;
+                    NavMeshSnapper.SnapNavToNavMesh(cube);
                     cube.transform.parent = pointOfInterest.transform;
-                    snapper.SnapNavToNavMesh(cube);
+                    status.text= GameObject.Find("Place").transform.position.ToString();//comment later
                 }
                 
-                TMP_Text g= GameObject.Find("gps").GetComponent<TMP_Text>();
-                g.text="";
+                //g.text="";
                 Debug.Log(string.Format("CallFromJS[{0}]", msg));
-                status.text = (gps.setPoint(40.76824754802539, -73.98398336790302).ToString());
+                //status.text = ();
                 status.GetComponent<Animation>().Play();
             },
             err: (msg) =>
@@ -230,7 +231,7 @@ public class SampleWebView : MonoBehaviour
 
     void OnGUI()
     {
-    /*
+    
          var x = 10;
 
         GUI.enabled = (webViewObject == null) ? false : webViewObject.CanGoBack();
@@ -251,7 +252,7 @@ public class SampleWebView : MonoBehaviour
             webViewObject?.Reload();
         }
         x += 90;
-
+        /*
         GUI.TextField(new Rect(x, 10, 180, 80), "" + ((webViewObject == null) ? 0 : webViewObject.Progress()));
         x += 190;
 
